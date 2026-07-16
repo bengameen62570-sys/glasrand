@@ -69,16 +69,21 @@
         <div class="scene-sun"></div>
         <div class="mountain mountain-back"></div>
         <div class="mountain mountain-front"></div>
-        <div class="scene-rail-top"></div>
-        <div class="scene-rail">
-          <div class="pane"></div>
-          <div class="pane"></div>
-          <div class="pane"></div>
-          <div class="pane"></div>
-          <div class="pane"></div>
-          <div class="scene-glint"></div>
+        <div class="scene-horizon-shadow"></div>
+        <div class="scene-foreground">
+          <div class="scene-terrace"></div>
+          <div class="scene-rail">
+            <div class="pane"></div>
+            <div class="pane"></div>
+            <div class="pane"></div>
+            <div class="pane"></div>
+            <div class="pane"></div>
+            <div class="pane"></div>
+            <div class="scene-glint"></div>
+          </div>
+          <div class="scene-clamp"></div>
+          <div class="scene-rail-top"></div>
         </div>
-        <div class="scene-terrace"></div>
       </div>
     </div>
   </section>
@@ -88,7 +93,7 @@
     <div class="container">
       <div class="section-head">
         <p class="eyebrow">Unser Ablauf</p>
-        <h2>Von der Vermessung bis zur fertigen Montage</h2>
+        <h2>Vom Aufmaß bis zur fertigen Montage</h2>
         <p>Ein Ansprechpartner für den gesamten Prozess — keine Abstimmung zwischen mehreren Firmen nötig.</p>
       </div>
       <div class="process-grid">
@@ -117,7 +122,7 @@
       <div class="lead-time-banner">
         <div>
           <strong>Standard-Lieferzeit: 3–5 Wochen</strong>
-          <span>Von der Vermessung bis zur fertigen Montage.</span>
+          <span>Vom Aufmaß bis zur fertigen Montage.</span>
         </div>
         <div class="lead-time-divider" aria-hidden="true"></div>
         <div>
@@ -183,6 +188,7 @@
             <li>Thermisch vorgespannt, sehr hohe Bruchfestigkeit</li>
             <li>Zerfällt bei Bruch in kleine, stumpfe Krümel</li>
             <li>Wirtschaftliche Lösung für die meisten Terrassen</li>
+            <li>Stärken: 6, 8, 10 oder 12 mm — je nach Scheibengröße</li>
           </ul>
         </div>
         <div class="type-card vsg">
@@ -200,6 +206,7 @@
             <li>Mehrere Scheiben mit reißfester Folie verbunden</li>
             <li>Bleibt bei Bruch in der Folie haften — kein Herausfallen</li>
             <li>Empfohlen für erhöhte Absturzhöhen und mehr Sicherheit</li>
+            <li>Stärken: von 6+6 bis 12+12 mm — je nach Scheibengröße</li>
           </ul>
         </div>
       </div>
@@ -273,12 +280,49 @@
         </div>
       </div>
       <div class="at-outline">
-        <iframe
-          title="Karte: Einsatzgebiet österreichweit, Standort Wien"
-          src="https://www.openstreetmap.org/export/embed.html?bbox=9.3%2C46.3%2C17.3%2C49.1&layer=mapnik&marker=48.2082%2C16.3719"
-          loading="lazy"
-          style="border:0;width:100%;height:100%;min-height:320px;border-radius:12px;">
-        </iframe>
+        <svg viewBox="0 0 520 380" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Österreich hervorgehoben vor dem Hintergrund Europas, mit den Städten Wien, Salzburg, Innsbruck, Linz, Graz und Klagenfurt">
+          <rect x="0" y="0" width="520" height="380" fill="var(--blue-050)"/>
+
+          <!-- Nachbarländer, gedimmt -->
+          <g fill="#c9d6e0" stroke="#aebfcc" stroke-width="1.5">
+            <path d="M70,40 C110,20 180,15 230,25 C270,15 320,20 350,40 C365,55 360,75 345,90 C320,100 290,95 270,105 C240,120 210,115 190,125 C160,120 130,115 110,105 C85,95 65,80 60,60 C58,50 62,45 70,40 Z"/>
+            <path d="M300,15 C330,5 365,8 385,20 C392,26 388,35 375,38 C350,42 320,38 302,28 C298,24 298,18 300,15 Z"/>
+            <path d="M270,55 C300,45 335,48 355,60 C365,68 360,80 345,85 C325,90 300,88 280,80 C270,75 265,65 270,55 Z"/>
+            <path d="M355,70 C375,62 398,66 408,78 C414,86 408,96 395,98 C378,100 362,94 355,85 C352,80 352,74 355,70 Z"/>
+            <path d="M0,60 C20,50 40,55 55,70 C65,85 60,105 50,120 C35,135 15,140 0,135 Z"/>
+            <path d="M95,105 C115,98 135,100 150,110 C160,120 155,135 140,140 C120,145 100,140 92,128 C88,118 90,110 95,105 Z"/>
+            <path d="M120,145 C135,140 150,145 158,155 C165,170 160,190 150,205 C145,220 150,235 145,250 C140,265 148,278 160,285 C172,290 180,278 175,265 C170,255 175,245 185,248 C195,252 198,265 190,275 C182,285 165,290 150,283 C138,278 132,265 128,250 C122,230 118,210 115,190 C112,175 110,160 120,145 Z"/>
+            <path d="M330,130 C355,120 385,122 400,135 C410,145 405,158 388,163 C368,168 345,165 328,155 C320,148 322,138 330,130 Z"/>
+            <path d="M255,175 C270,170 285,172 292,182 C296,190 290,198 278,200 C265,202 253,196 250,187 C248,182 250,178 255,175 Z"/>
+            <path d="M270,200 C285,196 305,198 318,208 C325,214 320,222 308,222 C295,222 280,218 272,212 C268,208 267,203 270,200 Z"/>
+          </g>
+
+          <!-- Österreich, hervorgehoben -->
+          <path d="M150,125 C160,110 175,100 190,105 C205,95 220,92 235,98 C250,90 265,88 280,95 C295,90 310,95 320,105 C332,112 340,120 335,132 C345,138 350,148 342,158 C333,166 320,168 308,163 C298,170 285,175 272,172 C258,178 244,180 230,175 C216,180 202,178 190,170 C176,172 163,168 155,158 C145,150 140,140 145,132 C142,128 145,127 150,125 Z"
+            fill="var(--blue-600)" stroke="var(--blue-900)" stroke-width="3" stroke-linejoin="round"/>
+
+          <!-- Städte -->
+          <circle cx="165" cy="128" r="4" fill="#fff"/>
+          <text x="165" y="118" font-size="11" text-anchor="middle" fill="var(--blue-900)" font-family="Inter, sans-serif">Innsbruck</text>
+
+          <circle cx="205" cy="108" r="4" fill="#fff"/>
+          <text x="205" y="98" font-size="11" text-anchor="middle" fill="var(--blue-900)" font-family="Inter, sans-serif">Salzburg</text>
+
+          <circle cx="255" cy="103" r="4" fill="#fff"/>
+          <text x="255" y="93" font-size="11" text-anchor="middle" fill="var(--blue-900)" font-family="Inter, sans-serif">Linz</text>
+
+          <circle cx="228" cy="163" r="4" fill="#fff"/>
+          <text x="228" y="180" font-size="11" text-anchor="middle" fill="var(--blue-900)" font-family="Inter, sans-serif">Klagenfurt</text>
+
+          <circle cx="278" cy="148" r="4" fill="#fff"/>
+          <text x="278" y="165" font-size="11" text-anchor="middle" fill="var(--blue-900)" font-family="Inter, sans-serif">Graz</text>
+
+          <!-- Wien = Standort, hervorgehoben -->
+          <circle cx="320" cy="118" r="8" fill="rgba(255,255,255,.35)"/>
+          <circle cx="320" cy="118" r="5" fill="#fff" stroke="var(--blue-900)" stroke-width="1.5"/>
+          <text x="320" y="103" font-size="14" font-weight="700" text-anchor="middle" fill="var(--blue-900)" font-family="'Space Grotesk', sans-serif">Wien</text>
+        </svg>
+        <p class="map-caption">Vereinfachte, schematische Darstellung.</p>
       </div>
     </div>
   </section>
@@ -321,9 +365,16 @@
           </div>
         </div>
 
-        <div class="field">
-          <label for="ort">Ort / Gemeinde</label>
-          <input type="text" id="ort" name="Ort" placeholder="z. B. Wien, Graz, Linz …">
+        <div class="form-row">
+          <div class="field">
+            <label for="ort">Ort / Gemeinde</label>
+            <input type="text" id="ort" name="Ort" placeholder="z. B. Wien, Graz, Linz …">
+          </div>
+          <div class="field">
+            <label for="plz">PLZ</label>
+            <input type="text" id="plz" name="PLZ" placeholder="z. B. 4600" inputmode="numeric">
+            <span style="display:block;font-size:.78rem;color:var(--ink-soft);margin-top:6px;">Hilft bei gleichnamigen Orten in Österreich</span>
+          </div>
         </div>
 
         <div class="form-row">
