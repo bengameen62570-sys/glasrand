@@ -392,11 +392,9 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible{
   border-radius:var(--radius);
   overflow:hidden;
   border:1px solid var(--line);
-  background:var(--blue-050);
-  padding:16px;
+  min-height:320px;
 }
-.at-outline svg{width:100%;height:auto;display:block;}
-.map-caption{margin-top:8px;font-size:.75rem;color:var(--ink-soft);text-align:center;}
+.at-outline iframe{display:block;}
 
 /* ============ Contact form ============ */
 .contact-wrap{
