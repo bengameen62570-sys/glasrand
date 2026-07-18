@@ -31,4 +31,43 @@ document.addEventListener('DOMContentLoaded', () => {
   const yearEl = document.getElementById('year');
   if (yearEl) yearEl.textContent = new Date().getFullYear();
 
+  // Cookie-Zustimmung (Google Consent Mode v2)
+  const CONSENT_KEY = 'glasrand_consent';
+  const banner = document.getElementById('cookie-banner');
+  const acceptBtn = document.getElementById('cookie-accept');
+  const declineBtn = document.getElementById('cookie-decline');
+
+  function updateConsent(granted) {
+    if (typeof gtag === 'function') {
+      gtag('consent', 'update', {
+        ad_storage: granted ? 'granted' : 'denied',
+        ad_user_data: granted ? 'granted' : 'denied',
+        ad_personalization: granted ? 'granted' : 'denied',
+        analytics_storage: granted ? 'granted' : 'denied'
+      });
+    }
+  }
+
+  if (banner) {
+    const saved = localStorage.getItem(CONSENT_KEY);
+    if (saved === 'accepted') {
+      updateConsent(true);
+    } else if (saved === 'declined') {
+      updateConsent(false);
+    } else {
+      banner.classList.remove('hidden');
+    }
+
+    if (acceptBtn) acceptBtn.addEventListener('click', () => {
+      localStorage.setItem(CONSENT_KEY, 'accepted');
+      updateConsent(true);
+      banner.classList.add('hidden');
+    });
+    if (declineBtn) declineBtn.addEventListener('click', () => {
+      localStorage.setItem(CONSENT_KEY, 'declined');
+      updateConsent(false);
+      banner.classList.add('hidden');
+    });
+  }
+
 });

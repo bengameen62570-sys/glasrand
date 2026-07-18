@@ -1,6 +1,17 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
+<!-- Google Consent Mode v2 (Standard: abgelehnt, bis Nutzer zustimmt) -->
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'analytics_storage': 'denied'
+  });
+</script>
 <!-- Google tag (gtag.js) -->
 <script async src="https://www.googletagmanager.com/gtag/js?id=AW-17923302542"></script>
 <script>
@@ -20,6 +31,15 @@
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
+
+<div class="cookie-banner hidden" id="cookie-banner">
+  <p>Wir verwenden Cookies von Google Ads, um die Wirksamkeit unserer Werbung zu messen. Mehr dazu in unserer <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
+  <div class="cookie-actions">
+    <button class="btn-cookie btn-cookie-decline" id="cookie-decline">Ablehnen</button>
+    <button class="btn-cookie btn-cookie-accept" id="cookie-accept">Akzeptieren</button>
+  </div>
+</div>
+
 
 <header class="site-header">
   <div class="container header-inner">
@@ -61,5 +81,6 @@
   </div>
 </main>
 
+<script src="script.js"></script>
 </body>
 </html>
