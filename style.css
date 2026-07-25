@@ -652,3 +652,11 @@ a.fit-card:hover .fit-more{text-decoration:underline;}
 .fc.active{border-color:var(--blue-600);box-shadow:0 0 0 3px rgba(24,120,196,.15);}
 .finish-current{font-size:.9rem;color:var(--ink-soft);margin-bottom:6px;}
 @media(max-width:760px){.picker{grid-template-columns:1fr;gap:22px;}}
+
+/* ===== Mini-Farbwähler (Startseite Beschläge) + kleinere Picker-Bilder ===== */
+.fc-mini{gap:8px;margin:12px 0 6px;}
+.fc-mini .fc{padding:5px;border-radius:50%;}
+.fc-mini .fc i{width:22px;height:22px;}
+.fc-mini .fc span{display:none;}
+.picker-media{max-width:440px;margin-left:auto;margin-right:auto;}
+a.fit-more:hover{text-decoration:underline;}
