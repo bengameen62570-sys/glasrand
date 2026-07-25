@@ -660,3 +660,11 @@ a.fit-card:hover .fit-more{text-decoration:underline;}
 .fc-mini .fc span{display:none;}
 .picker-media{max-width:440px;margin-left:auto;margin-right:auto;}
 a.fit-more:hover{text-decoration:underline;}
+
+/* ===== Picker-Bilder kleiner (systeme.html) ===== */
+.picker{grid-template-columns:340px 1fr;}
+.picker-media{max-width:none;margin:0;}
+@media(max-width:760px){
+  .picker{grid-template-columns:1fr;}
+  .picker-media{max-width:300px;margin-left:auto;margin-right:auto;}
+}
