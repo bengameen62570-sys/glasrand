@@ -627,3 +627,28 @@ footer{
 .btn{transition:transform .18s ease, box-shadow .18s ease;}
 .btn:hover{transform:translateY(-2px) scale(1.03);}
 .btn-primary:hover{box-shadow:0 16px 32px -10px rgba(10,58,92,.55);}
+
+/* ===== Beschläge: Farb-/Oberflächen-Hinweis + klickbare Karten ===== */
+a.fit-card{display:block;color:inherit;}
+.finish-dots{display:flex;gap:7px;margin:14px 0 2px;}
+.finish-dots i{width:18px;height:18px;border-radius:50%;border:1px solid rgba(10,58,92,.18);box-shadow:inset 0 1px 2px rgba(255,255,255,.55);}
+.d-silber{background:linear-gradient(135deg,#eef2f5,#b7c2ca);}
+.d-satin{background:linear-gradient(135deg,#e2e8ec,#c2ccd2);}
+.d-poliert{background:linear-gradient(135deg,#ffffff,#cdd6dc);}
+.d-schwarz{background:linear-gradient(135deg,#3a3f44,#111315);}
+.d-gold{background:linear-gradient(135deg,#e9c766,#b8892f);}
+.fit-more{display:inline-block;margin-top:10px;font-size:.85rem;font-weight:600;color:var(--blue-600);}
+a.fit-card:hover .fit-more{text-decoration:underline;}
+
+/* ===== Interaktiver Oberflächen-Picker (systeme.html) ===== */
+.picker{display:grid;grid-template-columns:1fr 1fr;gap:36px;align-items:center;}
+.picker-media{background:linear-gradient(180deg,#fff,#f4f8fb);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;}
+.picker-media img{width:100%;height:auto;display:block;}
+.picker-info h2{font-size:1.5rem;margin-bottom:8px;}
+.finish-choose{display:flex;flex-wrap:wrap;gap:10px;margin:16px 0 10px;}
+.fc{display:inline-flex;align-items:center;gap:8px;padding:8px 15px 8px 10px;border:1.5px solid var(--line);border-radius:100px;background:#fff;font-family:inherit;font-weight:600;font-size:.85rem;color:var(--blue-900);cursor:pointer;transition:border-color .2s,box-shadow .2s,transform .15s;}
+.fc i{width:18px;height:18px;border-radius:50%;border:1px solid rgba(10,58,92,.18);}
+.fc:hover{border-color:var(--blue-400);transform:translateY(-1px);}
+.fc.active{border-color:var(--blue-600);box-shadow:0 0 0 3px rgba(24,120,196,.15);}
+.finish-current{font-size:.9rem;color:var(--ink-soft);margin-bottom:6px;}
+@media(max-width:760px){.picker{grid-template-columns:1fr;gap:22px;}}

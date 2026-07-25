@@ -19,7 +19,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Systeme &amp; Oberflächen | GlasRand</title>
-<meta name="description" content="Drei Befestigungssysteme für Glasgeländer und ihre Oberflächen: Klemmprofil, Punkthalter und Glasstütze in Silber, Schwarz, Satiniert, Poliert und Gold.">
+<meta name="description" content="Befestigungssysteme für Glasgeländer und ihre Oberflächen: Klemmprofil, Punkthalter und Glasstütze in Silber, Schwarz, Satiniert, Poliert und Gold — Farbe direkt wählbar.">
 <link rel="icon" type="image/svg+xml" href="/favicon.svg">
 <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png">
 <link rel="apple-touch-icon" href="/apple-touch-icon.png">
@@ -65,7 +65,7 @@
     <div class="container">
       <p class="eyebrow">Befestigung</p>
       <h1>Befestigungssysteme &amp; Oberflächen</h1>
-      <p>Drei Systeme, viele Oberflächen — Ihr Glasgeländer passt genau zu Fassade und Stil. Alle Beschläge aus Edelstahl bzw. Aluminium.</p>
+      <p>Drei Systeme, viele Oberflächen — wählen Sie die Farbe direkt aus (tippen oder mit der Maus darüberfahren). Alle Beschläge aus Edelstahl bzw. Aluminium.</p>
       <a href="/" class="backlink">← Zur Startseite</a>
     </div>
   </section>
@@ -73,57 +73,40 @@
   <section>
     <div class="container">
     <div class="sys-block">
-      <h2>Klemmprofil (Alu-Bodenprofil)</h2>
-      <p class="sys-desc">Durchgehendes Bodenprofil ohne sichtbare Pfosten — die klare, moderne Linie. Boden- oder seitliche Montage möglich.</p>
-      <div class="swatch-grid">
-        <div class="swatch">
-          <div class="swatch-media"><img src="/img/finish/profil-silber.jpg" alt="Silber" width="680" height="520" loading="lazy"></div>
-          <div class="swatch-info"><h3>Silber</h3><p>Aluminium, eloxiert — der Klassiker.</p></div>
-        </div>
-        <div class="swatch">
-          <div class="swatch-media"><img src="/img/finish/profil-schwarz.jpg" alt="Schwarz" width="680" height="520" loading="lazy"></div>
-          <div class="swatch-info"><h3>Schwarz</h3><p>Matt-schwarz, für moderne Fassaden.</p></div>
+      <div class="picker">
+        <div class="picker-media"><img id="pimg1" src="/img/finish/profil-silber.jpg" data-active="/img/finish/profil-silber.jpg" alt="Klemmprofil (Alu-Bodenprofil)" width="680" height="520"></div>
+        <div class="picker-info">
+          <h2>Klemmprofil (Alu-Bodenprofil)</h2>
+          <p class="sys-desc">Durchgehendes Bodenprofil ohne sichtbare Pfosten — die klare, moderne Linie. Boden- oder seitliche Montage möglich.</p>
+          <div class="finish-choose" data-target="pimg1" data-label="plab1"><button type="button" class="fc active" data-img="/img/finish/profil-silber.jpg" data-name="Silber"><i class="d-silber"></i><span>Silber</span></button><button type="button" class="fc" data-img="/img/finish/profil-schwarz.jpg" data-name="Schwarz"><i class="d-schwarz"></i><span>Schwarz</span></button></div>
+          <p class="finish-current">Oberfläche: <strong id="plab1">Silber</strong></p>
+          <div class="spec-tags"><span>Aluminium</span><span>Boden- &amp; Seitmontage</span><span>für VSG 12,76–21,52 mm</span><span>pfostenlos</span></div>
         </div>
       </div>
-      <div class="spec-tags"><span>Aluminium</span><span>Boden- &amp; Seitmontage</span><span>für VSG 12,76–21,52 mm</span><span>pfostenlos</span></div>
     </div>
     <div class="sys-block">
-      <h2>Punkthalter / Glasadapter</h2>
-      <p class="sys-desc">Punktuelle Halter für eine besonders filigrane, reduzierte Optik. Edelstahl AISI 304.</p>
-      <div class="swatch-grid">
-        <div class="swatch">
-          <div class="swatch-media"><img src="/img/finish/punkt-satiniert.jpg" alt="Satiniert" width="680" height="520" loading="lazy"></div>
-          <div class="swatch-info"><h3>Satiniert</h3><p>Gebürsteter Edelstahl, dezent.</p></div>
-        </div>
-        <div class="swatch">
-          <div class="swatch-media"><img src="/img/finish/punkt-schwarz.jpg" alt="Schwarz" width="680" height="520" loading="lazy"></div>
-          <div class="swatch-info"><h3>Schwarz</h3><p>Black-Chrome / matt-schwarz.</p></div>
-        </div>
-        <div class="swatch">
-          <div class="swatch-media"><img src="/img/finish/punkt-gold.jpg" alt="Gold" width="680" height="520" loading="lazy"></div>
-          <div class="swatch-info"><h3>Gold</h3><p>Warmer Akzent für besondere Projekte.</p></div>
+      <div class="picker">
+        <div class="picker-media"><img id="pimg2" src="/img/finish/punkt-satiniert.jpg" data-active="/img/finish/punkt-satiniert.jpg" alt="Punkthalter / Glasadapter" width="680" height="520"></div>
+        <div class="picker-info">
+          <h2>Punkthalter / Glasadapter</h2>
+          <p class="sys-desc">Punktuelle Halter für eine besonders filigrane, reduzierte Optik. Edelstahl AISI 304.</p>
+          <div class="finish-choose" data-target="pimg2" data-label="plab2"><button type="button" class="fc active" data-img="/img/finish/punkt-satiniert.jpg" data-name="Satiniert"><i class="d-satin"></i><span>Satiniert</span></button><button type="button" class="fc" data-img="/img/finish/punkt-schwarz.jpg" data-name="Schwarz"><i class="d-schwarz"></i><span>Schwarz</span></button><button type="button" class="fc" data-img="/img/finish/punkt-gold.jpg" data-name="Gold"><i class="d-gold"></i><span>Gold</span></button></div>
+          <p class="finish-current">Oberfläche: <strong id="plab2">Satiniert</strong></p>
+          <div class="spec-tags"><span>Edelstahl AISI 304</span><span>für Glas 6–17,52 mm</span><span>Ø 24 / Ø 28 mm</span><span>Wandabstand 30–50 mm</span></div>
         </div>
       </div>
-      <div class="spec-tags"><span>Edelstahl AISI 304</span><span>für Glas 6–17,52 mm</span><span>Ø 24 / Ø 28 mm</span><span>Wandabstand 30–50 mm</span></div>
     </div>
     <div class="sys-block">
-      <h2>Glasstütze (Spigot)</h2>
-      <p class="sys-desc">Stabile Stütze mit Bodenplatte — sichere Befestigung, auch bei höherer Belastung.</p>
-      <div class="swatch-grid">
-        <div class="swatch">
-          <div class="swatch-media"><img src="/img/finish/stuetze-satiniert.jpg" alt="Satiniert" width="680" height="520" loading="lazy"></div>
-          <div class="swatch-info"><h3>Satiniert</h3><p>Gebürsteter Edelstahl.</p></div>
-        </div>
-        <div class="swatch">
-          <div class="swatch-media"><img src="/img/finish/stuetze-poliert.jpg" alt="Poliert" width="680" height="520" loading="lazy"></div>
-          <div class="swatch-info"><h3>Poliert</h3><p>Hochglanz, spiegelnde Optik.</p></div>
-        </div>
-        <div class="swatch">
-          <div class="swatch-media"><img src="/img/finish/stuetze-schwarz.jpg" alt="Schwarz (RAL 9005)" width="680" height="520" loading="lazy"></div>
-          <div class="swatch-info"><h3>Schwarz (RAL 9005)</h3><p>Tiefschwarz, pulverbeschichtet.</p></div>
+      <div class="picker">
+        <div class="picker-media"><img id="pimg3" src="/img/finish/stuetze-satiniert.jpg" data-active="/img/finish/stuetze-satiniert.jpg" alt="Glasstütze (Spigot)" width="680" height="520"></div>
+        <div class="picker-info">
+          <h2>Glasstütze (Spigot)</h2>
+          <p class="sys-desc">Stabile Stütze mit Bodenplatte — sichere Befestigung, auch bei höherer Belastung.</p>
+          <div class="finish-choose" data-target="pimg3" data-label="plab3"><button type="button" class="fc active" data-img="/img/finish/stuetze-satiniert.jpg" data-name="Satiniert"><i class="d-satin"></i><span>Satiniert</span></button><button type="button" class="fc" data-img="/img/finish/stuetze-poliert.jpg" data-name="Poliert"><i class="d-poliert"></i><span>Poliert</span></button><button type="button" class="fc" data-img="/img/finish/stuetze-schwarz.jpg" data-name="Schwarz (RAL 9005)"><i class="d-schwarz"></i><span>Schwarz (RAL 9005)</span></button></div>
+          <p class="finish-current">Oberfläche: <strong id="plab3">Satiniert</strong></p>
+          <div class="spec-tags"><span>Edelstahl</span><span>Bodenplatte</span><span>für VSG bis 21,52 mm</span><span>Terrasse &amp; Balkon</span></div>
         </div>
       </div>
-      <div class="spec-tags"><span>Edelstahl</span><span>Bodenplatte</span><span>für VSG bis 21,52 mm</span><span>Terrasse &amp; Balkon</span></div>
     </div>
       <p style="margin-top:28px"><a href="/glas.html" class="section-link">Mehr zu Glasart, Farben &amp; Sicherheit →</a></p>
     </div>
@@ -138,6 +121,19 @@
       </div>
     </div>
   </section>
+  <script>
+  document.querySelectorAll('.finish-choose').forEach(function(group){
+    var img=document.getElementById(group.dataset.target);
+    var label=document.getElementById(group.dataset.label);
+    var btns=group.querySelectorAll('.fc');
+    function activate(b){btns.forEach(function(x){x.classList.remove('active');});b.classList.add('active');img.dataset.active=b.dataset.img;img.src=b.dataset.img;if(label)label.textContent=b.dataset.name;}
+    btns.forEach(function(b){
+      b.addEventListener('click',function(){activate(b);});
+      b.addEventListener('mouseenter',function(){img.src=b.dataset.img;if(label)label.textContent=b.dataset.name;});
+    });
+    group.addEventListener('mouseleave',function(){img.src=img.dataset.active||img.src;var act=group.querySelector('.fc.active');if(label&&act)label.textContent=act.dataset.name;});
+  });
+  </script>
 </main>
 
 <footer>
