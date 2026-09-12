@@ -77,6 +77,13 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
+<style>
+  /* Fix: Telefonnummer im Header nicht umbrechen */
+  .header-phone{white-space:nowrap;}
+  .header-phone strong{white-space:nowrap;letter-spacing:0;}
+  @media (max-width:1450px){ .header-phone span{display:none;} }
+  @media (max-width:1250px){ .header-phone{display:none;} }
+</style>
 </head>
 <body>
 
