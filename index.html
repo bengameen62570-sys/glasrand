@@ -83,6 +83,22 @@
   .header-phone strong{white-space:nowrap;letter-spacing:0;}
   @media (max-width:1450px){ .header-phone span{display:none;} }
   @media (max-width:1250px){ .header-phone{display:none;} }
+
+#rechner{
+  --cblue:#0e4f80; --cblue-dark:#0a3a5e; --cink:#12304a; --cmuted:#5b7186;
+  --cline:#dbe6ef; --cbg:#f2f7fb; --cgreen:#25a05a;
+}
+#rechner *{box-sizing:border-box;}
+#rechner .calc{max-width:960px;margin:0 auto;}#rechner .calc h2{font-family:'Space Grotesk',sans-serif;font-size:2rem;margin:0 0 8px;}#rechner .calc .lead{color:var(--cmuted);margin:0 0 28px;font-size:1.02rem;}#rechner .calc-grid{display:grid;grid-template-columns:1fr 340px;gap:28px;align-items:start;}
+  @#rechner media (max-width:860px){#rechner .calc-grid{grid-template-columns:1fr;}}#rechner .field{margin-bottom:22px;}#rechner .field > label{display:block;font-weight:600;font-size:.93rem;margin-bottom:9px;}#rechner .hint{font-weight:400;color:var(--cmuted);font-size:.85rem;}#rechner .opts{display:flex;flex-wrap:wrap;gap:8px;}#rechner .opt{position:relative;}#rechner .opt input{position:absolute;opacity:0;width:0;height:0;}#rechner .opt span{display:block;padding:10px 15px;border:1.5px solid var(--cline);border-radius:10px;
+            cursor:pointer;font-size:.9rem;background:#fff;transition:.15s;user-select:none;}#rechner .opt input:checked + span{border-color:var(--cblue);background:var(--cbg);
+            color:var(--cblue-dark);font-weight:600;box-shadow:0 0 0 1px var(--cblue) inset;}#rechner .opt span:hover{border-color:#b9cfe0;}#rechner .len-row{display:flex;align-items:center;gap:16px;}#rechner .len-row input[type=range]{flex:1;accent-color:var(--cblue);}#rechner .len-box{width:110px;padding:11px 12px;border:1.5px solid var(--cline);border-radius:10px;
+           font-size:1.05rem;font-weight:600;font-family:'Inter',sans-serif;color:var(--cink);text-align:center;}#rechner .result{background:var(--cbg);border:1px solid var(--cline);border-radius:16px;padding:26px 24px;
+          position:sticky;top:20px;}#rechner .result .cap{font-size:.82rem;text-transform:uppercase;letter-spacing:.08em;color:var(--cmuted);margin-bottom:6px;}#rechner .result .sum{font-family:'Space Grotesk',sans-serif;font-size:2.5rem;font-weight:700;color:var(--cblue-dark);line-height:1.1;}#rechner .result .per{font-size:1.05rem;color:var(--cblue);font-weight:600;margin-top:6px;}#rechner .result .vat{font-size:.85rem;color:var(--cmuted);margin-top:10px;}#rechner .result hr{border:none;border-top:1px solid var(--cline);margin:20px 0;}#rechner .result .note{font-size:.84rem;color:var(--cmuted);line-height:1.5;}#rechner .btn-cta{display:block;text-align:center;margin-top:18px;padding:14px;border-radius:12px;
+           background:var(--cblue);color:#fff;text-decoration:none;font-weight:600;font-size:.98rem;}#rechner .btn-cta:hover{background:var(--cblue-dark);}#rechner .btn-wa{display:block;text-align:center;margin-top:10px;padding:14px;border-radius:12px;
+          background:var(--cgreen);color:#fff;text-decoration:none;font-weight:600;font-size:.98rem;}#rechner .viz{border:1px solid var(--cline);border-radius:14px;background:#fbfdff;padding:14px 14px 8px;margin-bottom:22px;}#rechner .viz-cap{font-size:.8rem;color:var(--cmuted);text-align:center;margin-top:4px;}#rechner .explain{background:var(--cbg);border-left:3px solid var(--cblue);border-radius:0 10px 10px 0;
+           padding:13px 16px;margin-top:10px;font-size:.88rem;line-height:1.55;color:var(--cink);}#rechner .explain b{color:var(--cblue-dark);}#rechner .explain .no{color:var(--cmuted);}#rechner .breakdown{margin-top:26px;font-size:.88rem;border-top:1px solid var(--cline);padding-top:16px;}#rechner .breakdown summary{cursor:pointer;font-weight:600;color:var(--cblue);}#rechner .breakdown table{width:100%;border-collapse:collapse;margin-top:12px;}#rechner .breakdown td{padding:5px 0;color:var(--cmuted);}#rechner .breakdown td:last-child{text-align:right;color:var(--cink);font-weight:500;}
+
 </style>
 </head>
 <body>
@@ -108,6 +124,7 @@
       <a href="glas.html">Glas &amp; Sicherheit</a>
       <a href="systeme.html">Systeme</a>
       <a href="anwendungen.html">Anwendungen</a>
+      <a href="#rechner">Preisrechner</a>
       <a href="#faq">FAQ</a>
       <a href="#kontakt">Kontakt</a>
     </nav>
@@ -117,7 +134,7 @@
         <span>Anrufen</span>
         <strong>+43 681 81380389</strong>
       </a>
-      <a href="#kontakt" class="btn btn-primary"><span>Gratis Berechnung</span></a>
+      <a href="#rechner" class="btn btn-primary"><span>Gratis Berechnung</span></a>
       <button class="nav-toggle" id="navToggle" aria-label="Menü öffnen" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
@@ -162,6 +179,100 @@
       <div class="trust-item"><span class="trust-ic" aria-hidden="true">✓</span><div><strong>ESG &amp; VSG geprüft</strong><span>zertifiziertes Sicherheitsglas</span></div></div>
       <div class="trust-item"><span class="trust-ic" aria-hidden="true">✓</span><div><strong>Alles aus einer Hand</strong><span>Aufmaß, Fertigung &amp; Montage</span></div></div>
       <div class="trust-item"><span class="trust-ic" aria-hidden="true">✓</span><div><strong>Österreichweit</strong><span>im Einsatz, von Wien aus</span></div></div>
+    </div>
+  </section>
+
+  <section id="rechner" class="section-alt">
+    <div class="container">
+<div class="calc">
+  <h2>Preisrechner</h2>
+  <p class="lead">Richtpreis in 30 Sekunden — ohne Kontaktdaten, ohne Wartezeit.</p>
+
+  <div class="calc-grid">
+    <div>
+
+      <div class="viz">
+        <svg id="viz" viewBox="0 0 420 190" xmlns="http://www.w3.org/2000/svg" style="width:100%;height:auto;"></svg>
+        <div class="viz-cap" id="vizCap"></div>
+      </div>
+
+      <div class="field">
+        <label>Länge des Geländers <span class="hint">— Laufmeter</span></label>
+        <div class="len-row">
+          <input type="range" id="len" min="3" max="60" step="0.5" value="12">
+          <input type="text" class="len-box" id="lenBox" value="12 lfm" readonly>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Wo kommt das Geländer hin?</label>
+        <div class="opts" id="bereich">
+          <label class="opt"><input type="radio" name="b" value="gerade" checked><span>Balkon / Terrasse</span></label>
+          <label class="opt"><input type="radio" name="b" value="treppe"><span>Treppe (schräg)</span></label>
+          <label class="opt"><input type="radio" name="b" value="galerie"><span>Galerie / Gang innen</span></label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Befestigung</label>
+        <div class="opts" id="besch">
+          <label class="opt"><input type="radio" name="f" value="profil" checked><span>Klemmprofil</span></label>
+          <label class="opt"><input type="radio" name="f" value="punkt"><span>Punkthalter</span></label>
+          <label class="opt"><input type="radio" name="f" value="pfosten"><span>Mini-Pfosten</span></label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Glas</label>
+        <div class="opts" id="glas">
+          <label class="opt"><input type="radio" name="g" value="klar" checked><span>VSG 8+8 Klar</span></label>
+          <label class="opt"><input type="radio" name="g" value="extra"><span>Extraklar</span></label>
+          <label class="opt"><input type="radio" name="g" value="grau"><span>Grau / Schwarz</span></label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Höhe</label>
+        <div class="opts" id="hoehe">
+          <label class="opt"><input type="radio" name="h" value="1" checked><span>100 cm</span></label>
+          <label class="opt"><input type="radio" name="h" value="1.1"><span>110 cm</span></label>
+        </div>
+      </div>
+
+      <div class="field">
+        <label>Leistungsumfang</label>
+        <div class="opts" id="umfang">
+          <label class="opt"><input type="radio" name="m" value="montage" checked><span>Mit Aufmaß und Montage</span></label>
+          <label class="opt"><input type="radio" name="m" value="lieferung"><span>Nur Lieferung</span></label>
+        </div>
+        <div class="explain" id="explain"></div>
+      </div>
+
+      <div class="field">
+        <label>Region</label>
+        <div class="opts" id="region">
+          <label class="opt"><input type="radio" name="r" value="wien" checked><span>Wien + 50 km</span></label>
+          <label class="opt"><input type="radio" name="r" value="mittel"><span>bis 200 km</span></label>
+          <label class="opt"><input type="radio" name="r" value="fern"><span>über 200 km</span></label>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="result">
+      <div class="cap">Richtpreis</div>
+      <div class="sum" id="sum">—</div>
+      <div class="per" id="per">—</div>
+      <div class="vat">inkl. 20 % MwSt., inkl. Lieferung</div>
+      <hr>
+      <div class="note">Unverbindlicher Richtwert. Das verbindliche Angebot erstellen wir nach dem Aufmaß vor Ort — Ecken, Untergrund und Höhenversätze können den Preis verändern.</div>
+      <a class="btn-cta" href="#kontakt">Verbindliches Angebot anfordern</a>
+      <a class="btn-wa" href="https://wa.me/4368181380389" target="_blank" rel="noopener">Per WhatsApp fragen</a>
+    </div>
+
+  </div>
+</div>
+
     </div>
   </section>
 
@@ -592,6 +703,156 @@
     });
     group.addEventListener('mouseleave',function(){img.src=img.dataset.active||img.src;});
   });
+</script>
+<script>
+(function(){
+  // ---- Расценки (всё с НДС), схема наценки 40% на всю себестоимость ----
+  var P = {
+    glas:     { klar:125, extra:145, grau:184.5 },   // €/м²
+    profil:   150,   // €/пог.м, хлысты по 5 м
+    punkt:    20,    // €/шт, 4 шт на пог.м
+    pfosten:  35,    // €/шт, 2 шт на пог.м
+    montage:  130,   // €/пог.м
+    aufmass:  200,   // разовое
+    liefer:   350,   // разовое
+    anfahrt:  { wien:150, mittel:400, fern:600 },  // разовое
+    treppe:   1.5,   // коэффициент на стекло для наклонных участков
+    marge:    1.4
+  };
+
+  function v(n){ return document.querySelector('input[name="'+n+'"]:checked').value; }
+
+  function calc(){
+    var L = parseFloat(document.getElementById('len').value);
+    var b = v('b'), f = v('f'), g = v('g'), h = parseFloat(v('h')),
+        m = v('m'), r = v('r');
+
+    var flaeche = L * h;
+    var glasPreis = flaeche * P.glas[g];
+    if (b === 'treppe') glasPreis *= P.treppe;
+
+    var besch;
+    if (f === 'profil')      besch = Math.ceil(L/5)*5 * P.profil;
+    else if (f === 'punkt')  besch = Math.round(L*4) * P.punkt;
+    else                     besch = Math.round(L*2) * P.pfosten;
+
+    var montage = 0, aufmass = 0, anfahrt = 0;
+    if (m === 'montage'){
+      montage = L * P.montage;
+      aufmass = P.aufmass;
+      anfahrt = P.anfahrt[r];
+    }
+    var liefer = P.liefer;
+
+    var kosten = glasPreis + besch + montage + aufmass + anfahrt + liefer;
+    var preis  = kosten * P.marge;
+
+    document.getElementById('sum').textContent = fmt(round50(preis)) + ' €';
+    document.getElementById('per').textContent = 'ca. ' + fmt(Math.round(preis/L)) + ' € / lfm';
+    document.getElementById('lenBox').value = L.toString().replace('.',',') + ' lfm';
+
+    drawViz(); drawExplain();
+  }
+
+  // ---- схема: прямая проекция, вид со стороны фасада ----
+  var GLASFARBE = { klar:'#cfe6f2', extra:'#dff1fa', grau:'#8b9aa6' };
+
+  function drawViz(){
+    var f = v('f'), g = v('g'), b = v('b'), h = parseFloat(v('h'));
+    var sv = document.getElementById('viz');
+    var W = 420, H = 190, boden = 150;
+    var hoehePx = h === 1.1 ? 104 : 95;
+    var x0 = 40, x1 = 380;
+    var panels = 3, gap = 6;
+    var pw = ((x1 - x0) - gap * (panels - 1)) / panels;
+    var o = '';
+
+    // наклон для лестницы
+    var steig = (b === 'treppe') ? 30 : 0;
+
+    // основание
+    o += '<line x1="20" y1="' + boden + '" x2="400" y2="' + boden + '" stroke="#9fb3c4" stroke-width="2"/>';
+    if (b === 'treppe'){
+      o += '<line x1="20" y1="' + boden + '" x2="400" y2="' + (boden - 62) + '" stroke="#9fb3c4" stroke-width="2" stroke-dasharray="4 4"/>';
+    }
+
+    for (var i = 0; i < panels; i++){
+      var x = x0 + i * (pw + gap);
+      var dy = (b === 'treppe') ? -(i * steig * 0.7) : 0;
+      var yb = boden - 4 + dy;
+      var yt = yb - hoehePx;
+
+      // стекло
+      o += '<rect x="' + x + '" y="' + yt + '" width="' + pw + '" height="' + hoehePx + '" rx="2" fill="' +
+           GLASFARBE[g] + '" fill-opacity="' + (g === 'grau' ? '.75' : '.55') +
+           '" stroke="#6f93ad" stroke-width="1.4"/>';
+      // блик
+      o += '<line x1="' + (x + pw*0.18) + '" y1="' + (yt + 8) + '" x2="' + (x + pw*0.42) + '" y2="' + (yb - 8) +
+           '" stroke="#fff" stroke-width="2" stroke-opacity=".55"/>';
+
+      // крепление
+      if (f === 'punkt'){
+        [0.22, 0.78].forEach(function(k){
+          o += '<circle cx="' + (x + pw*k) + '" cy="' + (yb - 12) + '" r="5.5" fill="#fff" stroke="#43566a" stroke-width="2"/>';
+        });
+      } else if (f === 'pfosten'){
+        [0.10, 0.90].forEach(function(k){
+          o += '<rect x="' + (x + pw*k - 4) + '" y="' + (yb - 26) + '" width="8" height="26" rx="1.5" fill="#c3ccd4" stroke="#43566a" stroke-width="1.4"/>';
+        });
+      }
+    }
+
+    // сплошной зажимной профиль
+    if (f === 'profil'){
+      var yp = boden - 4;
+      if (b === 'treppe'){
+        o += '<polygon points="' + x0 + ',' + yp + ' ' + x1 + ',' + (yp - 2*steig*0.7) + ' ' +
+             x1 + ',' + (yp - 2*steig*0.7 + 15) + ' ' + x0 + ',' + (yp + 15) +
+             '" fill="#c3ccd4" stroke="#43566a" stroke-width="1.6"/>';
+      } else {
+        o += '<rect x="' + (x0 - 4) + '" y="' + (yp - 15) + '" width="' + (x1 - x0 + 8) +
+             '" height="15" rx="2" fill="#c3ccd4" stroke="#43566a" stroke-width="1.6"/>';
+      }
+    }
+
+    // размерная линия высоты
+    var hy = boden - 4;
+    o += '<line x1="26" y1="' + (hy - hoehePx) + '" x2="26" y2="' + hy + '" stroke="#5b7186" stroke-width="1"/>';
+    o += '<line x1="22" y1="' + (hy - hoehePx) + '" x2="30" y2="' + (hy - hoehePx) + '" stroke="#5b7186" stroke-width="1"/>';
+    o += '<line x1="22" y1="' + hy + '" x2="30" y2="' + hy + '" stroke="#5b7186" stroke-width="1"/>';
+    o += '<text x="18" y="' + (hy - hoehePx/2) + '" font-size="11" fill="#5b7186" text-anchor="middle" transform="rotate(-90 18 ' + (hy - hoehePx/2) + ')">' + (h===1.1?'110':'100') + ' cm</text>';
+
+    sv.innerHTML = o;
+
+    var namen = { profil:'Klemmprofil — durchgehendes Aluprofil, rahmenlose Optik',
+                  punkt:'Punkthalter — einzelne Klemmen, sichtbare Befestigung',
+                  pfosten:'Mini-Pfosten — kurze Stützen, günstigste Variante' };
+    document.getElementById('vizCap').textContent = namen[f];
+  }
+
+  function drawExplain(){
+    var m = v('m'), e = document.getElementById('explain');
+    if (m === 'montage'){
+      e.innerHTML = '<b>Enthalten:</b> Aufmaß vor Ort, Fertigung nach Maß, Anfahrt, Lieferung, ' +
+        'Montage der Befestigung und des Glases.<br>' +
+        '<span class="no"><b>Nicht enthalten:</b> Demontage des alten Geländers, Arbeiten am Untergrund ' +
+        '(Estrich, Beton, Abdichtung).</span>';
+    } else {
+      e.innerHTML = '<b>Enthalten:</b> Profile, Glas und Zubehör nach Ihren Maßen, Lieferung frei Haus.<br>' +
+        '<span class="no"><b>Sie übernehmen:</b> Aufmaß und Montage. Für die angegebenen Maße haften Sie — ' +
+        'Glas auf Maß ist vom Umtausch ausgeschlossen.</span>';
+    }
+  }
+
+  function round50(x){ return Math.round(x/50)*50; }
+  function fmt(n){ return n.toLocaleString('de-AT'); }
+
+  document.querySelectorAll('#rechner input').forEach(function(el){
+    el.addEventListener('input', calc);
+    el.addEventListener('change', calc);
+  });
+  calc();
+})();
 </script>
 <script src="script.js"></script>
 </body>
