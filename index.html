@@ -104,7 +104,7 @@
 <body>
 
 <div class="cookie-banner hidden" id="cookie-banner">
-  <p>Wir verwenden Cookies von Google Ads, um die Wirksamkeit unserer Werbung zu messen. Mehr dazu in unserer <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
+  <p>Wir verwenden Cookies von Google Ads zur Messung unserer Werbung sowie Microsoft Clarity zur Analyse der Website-Nutzung (inkl. Sitzungsaufzeichnung). Mehr dazu in unserer <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
   <div class="cookie-actions">
     <button class="btn-cookie btn-cookie-decline" id="cookie-decline">Ablehnen</button>
     <button class="btn-cookie btn-cookie-accept" id="cookie-accept">Akzeptieren</button>
@@ -210,6 +210,14 @@
           <label class="opt"><input type="radio" name="b" value="gerade" checked><span>Balkon / Terrasse</span></label>
           <label class="opt"><input type="radio" name="b" value="treppe"><span>Treppe (schräg)</span></label>
           <label class="opt"><input type="radio" name="b" value="galerie"><span>Galerie / Gang innen</span></label>
+        </div>
+      </div>
+
+      <div class="field" id="schraegField" style="display:none;">
+        <label>Davon schräg (Treppenlauf) <span class="hint">— Laufmeter im Gefälle</span></label>
+        <div class="len-row">
+          <input type="range" id="lenS" min="0" max="60" step="0.5" value="5">
+          <input type="text" class="len-box" id="lenSBox" value="5 lfm" readonly>
         </div>
       </div>
 
@@ -716,7 +724,7 @@
     aufmass:  200,   // разовое
     liefer:   350,   // разовое
     anfahrt:  { wien:150, mittel:400, fern:600 },  // разовое
-    treppe:   1.5,   // коэффициент на стекло для наклонных участков
+    treppe:   1.7,   // коэффициент на наклонные метры (стекло + монтаж)
     marge:    1.4
   };
 
@@ -727,9 +735,24 @@
     var b = v('b'), f = v('f'), g = v('g'), h = parseFloat(v('h')),
         m = v('m'), r = v('r');
 
+    // наклонные метры считаются с коэффициентом
+    var sf = document.getElementById('schraegField');
+    var sIn = document.getElementById('lenS');
+    sIn.max = L;
+    var Ls = 0;
+    if (b === 'treppe'){
+      sf.style.display = '';
+      if (parseFloat(sIn.value) > L) sIn.value = L;
+      Ls = parseFloat(sIn.value);
+      document.getElementById('lenSBox').value = Ls.toString().replace('.',',') + ' lfm';
+    } else {
+      sf.style.display = 'none';
+    }
+    var Lg = L - Ls;
+    var Lrech = Lg + Ls * P.treppe;   // приведённые метры
+
     var flaeche = L * h;
-    var glasPreis = flaeche * P.glas[g];
-    if (b === 'treppe') glasPreis *= P.treppe;
+    var glasPreis = Lrech * h * P.glas[g];
 
     var besch;
     if (f === 'profil')      besch = Math.ceil(L/5)*5 * P.profil;
@@ -738,7 +761,7 @@
 
     var montage = 0, aufmass = 0, anfahrt = 0;
     if (m === 'montage'){
-      montage = L * P.montage;
+      montage = Lrech * P.montage;
       aufmass = P.aufmass;
       anfahrt = P.anfahrt[r];
     }

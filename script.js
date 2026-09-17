@@ -37,7 +37,20 @@ document.addEventListener('DOMContentLoaded', () => {
   const acceptBtn = document.getElementById('cookie-accept');
   const declineBtn = document.getElementById('cookie-decline');
 
+  // Microsoft Clarity — wird NUR nach Zustimmung geladen
+  let clarityLoaded = false;
+  function loadClarity() {
+    if (clarityLoaded) return;
+    clarityLoaded = true;
+    (function(c,l,a,r,i,t,y){
+      c[a]=c[a]||function(){(c[a].q=c[a].q||[]).push(arguments)};
+      t=l.createElement(r);t.async=1;t.src="https://www.clarity.ms/tag/"+i;
+      y=l.getElementsByTagName(r)[0];y.parentNode.insertBefore(t,y);
+    })(window, document, "clarity", "script", "yjtwnchug7");
+  }
+
   function updateConsent(granted) {
+    if (granted) loadClarity();
     if (typeof gtag === 'function') {
       gtag('consent', 'update', {
         ad_storage: granted ? 'granted' : 'denied',
