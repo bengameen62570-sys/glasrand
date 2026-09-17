@@ -783,63 +783,65 @@
   function drawViz(){
     var f = v('f'), g = v('g'), b = v('b'), h = parseFloat(v('h'));
     var sv = document.getElementById('viz');
-    var W = 420, H = 190, boden = 150;
+    var schraeg = (b === 'treppe');
+    var W = 420, H = schraeg ? 240 : 190;
+    sv.setAttribute('viewBox', '0 0 ' + W + ' ' + H);
+
+    var boden = schraeg ? 200 : 150;
     var hoehePx = h === 1.1 ? 104 : 95;
     var x0 = 40, x1 = 380;
     var panels = 3, gap = 6;
     var pw = ((x1 - x0) - gap * (panels - 1)) / panels;
+    var slope = schraeg ? 0.25 : 0;   // подъём марша
     var o = '';
 
-    // наклон для лестницы
-    var steig = (b === 'treppe') ? 30 : 0;
-
-    // основание
-    o += '<line x1="20" y1="' + boden + '" x2="400" y2="' + boden + '" stroke="#9fb3c4" stroke-width="2"/>';
-    if (b === 'treppe'){
-      o += '<line x1="20" y1="' + boden + '" x2="400" y2="' + (boden - 62) + '" stroke="#9fb3c4" stroke-width="2" stroke-dasharray="4 4"/>';
+    // основание / линия марша
+    if (schraeg){
+      o += '<line x1="20" y1="' + (boden + (x0-20)*slope) + '" x2="400" y2="' +
+           (boden - (400-x0)*slope) + '" stroke="#9fb3c4" stroke-width="2"/>';
+    } else {
+      o += '<line x1="20" y1="' + boden + '" x2="400" y2="' + boden + '" stroke="#9fb3c4" stroke-width="2"/>';
     }
 
-    for (var i = 0; i < panels; i++){
-      var x = x0 + i * (pw + gap);
-      var dy = (b === 'treppe') ? -(i * steig * 0.7) : 0;
-      var yb = boden - 4 + dy;
-      var yt = yb - hoehePx;
+    function bodenY(x){ return boden - (x - x0) * slope; }
 
-      // стекло
-      o += '<rect x="' + x + '" y="' + yt + '" width="' + pw + '" height="' + hoehePx + '" rx="2" fill="' +
-           GLASFARBE[g] + '" fill-opacity="' + (g === 'grau' ? '.75' : '.55') +
+    for (var i = 0; i < panels; i++){
+      var x  = x0 + i * (pw + gap);
+      var yl = bodenY(x) - 4;          // низ слева
+      var yr = bodenY(x + pw) - 4;     // низ справа
+      var tl = yl - hoehePx, tr = yr - hoehePx;
+
+      // стекло: на марше — параллелограмм (боковые кромки вертикальные)
+      o += '<polygon points="' + x + ',' + yl + ' ' + (x+pw) + ',' + yr + ' ' +
+           (x+pw) + ',' + tr + ' ' + x + ',' + tl + '" fill="' + GLASFARBE[g] +
+           '" fill-opacity="' + (g === 'grau' ? '.75' : '.55') +
            '" stroke="#6f93ad" stroke-width="1.4"/>';
       // блик
-      o += '<line x1="' + (x + pw*0.18) + '" y1="' + (yt + 8) + '" x2="' + (x + pw*0.42) + '" y2="' + (yb - 8) +
-           '" stroke="#fff" stroke-width="2" stroke-opacity=".55"/>';
+      o += '<line x1="' + (x + pw*0.18) + '" y1="' + (tl + 10) + '" x2="' + (x + pw*0.42) +
+           '" y2="' + (yl - 10) + '" stroke="#fff" stroke-width="2" stroke-opacity=".55"/>';
 
-      // крепление
       if (f === 'punkt'){
         [0.22, 0.78].forEach(function(k){
-          o += '<circle cx="' + (x + pw*k) + '" cy="' + (yb - 12) + '" r="5.5" fill="#fff" stroke="#43566a" stroke-width="2"/>';
+          o += '<circle cx="' + (x + pw*k) + '" cy="' + (bodenY(x + pw*k) - 16) +
+               '" r="5.5" fill="#fff" stroke="#43566a" stroke-width="2"/>';
         });
       } else if (f === 'pfosten'){
         [0.10, 0.90].forEach(function(k){
-          o += '<rect x="' + (x + pw*k - 4) + '" y="' + (yb - 26) + '" width="8" height="26" rx="1.5" fill="#c3ccd4" stroke="#43566a" stroke-width="1.4"/>';
+          o += '<rect x="' + (x + pw*k - 4) + '" y="' + (bodenY(x + pw*k) - 30) +
+               '" width="8" height="26" rx="1.5" fill="#c3ccd4" stroke="#43566a" stroke-width="1.4"/>';
         });
       }
     }
 
-    // сплошной зажимной профиль
     if (f === 'profil'){
-      var yp = boden - 4;
-      if (b === 'treppe'){
-        o += '<polygon points="' + x0 + ',' + yp + ' ' + x1 + ',' + (yp - 2*steig*0.7) + ' ' +
-             x1 + ',' + (yp - 2*steig*0.7 + 15) + ' ' + x0 + ',' + (yp + 15) +
-             '" fill="#c3ccd4" stroke="#43566a" stroke-width="1.6"/>';
-      } else {
-        o += '<rect x="' + (x0 - 4) + '" y="' + (yp - 15) + '" width="' + (x1 - x0 + 8) +
-             '" height="15" rx="2" fill="#c3ccd4" stroke="#43566a" stroke-width="1.6"/>';
-      }
+      var a = bodenY(x0 - 4) - 4, c = bodenY(x1 + 4) - 4;
+      o += '<polygon points="' + (x0-4) + ',' + (a-15) + ' ' + (x1+4) + ',' + (c-15) + ' ' +
+           (x1+4) + ',' + c + ' ' + (x0-4) + ',' + a +
+           '" fill="#c3ccd4" stroke="#43566a" stroke-width="1.6"/>';
     }
 
-    // размерная линия высоты
-    var hy = boden - 4;
+    // размерная линия высоты (по первой панели, вертикально)
+    var hy = bodenY(x0) - 4;
     o += '<line x1="26" y1="' + (hy - hoehePx) + '" x2="26" y2="' + hy + '" stroke="#5b7186" stroke-width="1"/>';
     o += '<line x1="22" y1="' + (hy - hoehePx) + '" x2="30" y2="' + (hy - hoehePx) + '" stroke="#5b7186" stroke-width="1"/>';
     o += '<line x1="22" y1="' + hy + '" x2="30" y2="' + hy + '" stroke="#5b7186" stroke-width="1"/>';
@@ -850,7 +852,8 @@
     var namen = { profil:'Klemmprofil — durchgehendes Aluprofil, rahmenlose Optik',
                   punkt:'Punkthalter — einzelne Klemmen, sichtbare Befestigung',
                   pfosten:'Mini-Pfosten — kurze Stützen, günstigste Variante' };
-    document.getElementById('vizCap').textContent = namen[f];
+    document.getElementById('vizCap').textContent = namen[f] +
+      (schraeg ? ' · Scheiben als Parallelogramm zugeschnitten' : '');
   }
 
   function drawExplain(){
