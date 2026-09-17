@@ -83,6 +83,10 @@
   .header-phone strong{white-space:nowrap;letter-spacing:0;}
   @media (max-width:1450px){ .header-phone span{display:none;} }
   @media (max-width:1250px){ .header-phone{display:none;} }
+  /* Badge: Montage inklusive */
+  .montage-badge{display:inline-block;margin:0 0 14px;padding:8px 15px;border-radius:999px;
+    background:#e8f5ee;color:#1c6b40;font-size:.92rem;font-weight:500;line-height:1.35;}
+  .montage-badge strong{font-weight:700;}
 
 #rechner{
   --cblue:#0e4f80; --cblue-dark:#0a3a5e; --cink:#12304a; --cmuted:#5b7186;
@@ -149,6 +153,7 @@
     <div class="container hero-grid">
       <div>
         <p class="eyebrow">Ganzglasgeländer für Terrassen · Österreichweit</p>
+        <p class="montage-badge">✓ Aufmaß, Lieferung und <strong>Montage inklusive</strong> — Sie bauen nichts selbst</p>
         <h1>Klare Kante für Ihre Terrasse.</h1>
         <p class="hero-lead">Aufmaß, Fertigung, Lieferung und Montage von Glasgeländern — aus einer Hand. Wir sind in ganz Österreich für Sie unterwegs, von Wien aus.</p>
         <div class="hero-cta">
@@ -257,6 +262,14 @@
       </div>
 
       <div class="field">
+        <label>Liefertermin</label>
+        <div class="opts" id="termin">
+          <label class="opt"><input type="radio" name="t" value="standard" checked><span>Standard — 3–5 Wochen</span></label>
+          <label class="opt"><input type="radio" name="t" value="express"><span>Express — 1–2 Wochen</span></label>
+        </div>
+      </div>
+
+      <div class="field">
         <label>Region</label>
         <div class="opts" id="region">
           <label class="opt"><input type="radio" name="r" value="wien" checked><span>Wien + 50 km</span></label>
@@ -271,7 +284,8 @@
       <div class="cap">Richtpreis</div>
       <div class="sum" id="sum">—</div>
       <div class="per" id="per">—</div>
-      <div class="vat">inkl. 20 % MwSt., inkl. Lieferung</div>
+      <div class="vat">inkl. 20 % MwSt., inkl. Lieferung und Montage</div>
+      <div class="liefer" id="lieferInfo"></div>
       <hr>
       <div class="note">Unverbindlicher Richtwert. Das verbindliche Angebot erstellen wir nach dem Aufmaß vor Ort — Ecken, Untergrund und Höhenversätze können den Preis verändern.</div>
       <a class="btn-cta" href="#kontakt">Verbindliches Angebot anfordern</a>
@@ -725,6 +739,7 @@
     liefer:   350,   // разовое
     anfahrt:  { wien:150, mittel:400, fern:600 },  // разовое
     treppe:   1.7,   // коэффициент на наклонные метры (стекло + монтаж)
+    express:  1.2,   // надбавка за срочное изготовление
     marge:    1.4
   };
 
@@ -769,6 +784,12 @@
 
     var kosten = glasPreis + besch + montage + aufmass + anfahrt + liefer;
     var preis  = kosten * P.marge;
+    var t = v('t');
+    if (t === 'express') preis *= P.express;
+
+    document.getElementById('lieferInfo').innerHTML = (t === 'express')
+      ? 'Lieferung und Montage in <b>1–2 Wochen</b> (Expresszuschlag bereits enthalten).<br>Angebot 30 Tage gültig.'
+      : 'Lieferung und Montage in <b>3–5 Wochen</b> ab Auftragsbestätigung.<br>Angebot 30 Tage gültig.';
 
     document.getElementById('sum').textContent = fmt(round50(preis)) + ' €';
     document.getElementById('per').textContent = 'ca. ' + fmt(Math.round(preis/L)) + ' € / lfm';
