@@ -94,7 +94,7 @@
 }
 #rechner *{box-sizing:border-box;}
 #rechner .calc{max-width:960px;margin:0 auto;}#rechner .calc h2{font-family:'Space Grotesk',sans-serif;font-size:2rem;margin:0 0 8px;}#rechner .calc .lead{color:var(--cmuted);margin:0 0 28px;font-size:1.02rem;}#rechner .calc-grid{display:grid;grid-template-columns:1fr 340px;gap:28px;align-items:start;}
-  @#rechner media (max-width:860px){#rechner .calc-grid{grid-template-columns:1fr;}}#rechner .field{margin-bottom:22px;}#rechner .field > label{display:block;font-weight:600;font-size:.93rem;margin-bottom:9px;}#rechner .hint{font-weight:400;color:var(--cmuted);font-size:.85rem;}#rechner .opts{display:flex;flex-wrap:wrap;gap:8px;}#rechner .opt{position:relative;}#rechner .opt input{position:absolute;opacity:0;width:0;height:0;}#rechner .opt span{display:block;padding:10px 15px;border:1.5px solid var(--cline);border-radius:10px;
+  @media (max-width:860px){#rechner .calc-grid{grid-template-columns:1fr;} #rechner .result{position:static;} #rechner .result .sum{font-size:2.1rem;} #rechner .opt span{padding:9px 12px;font-size:.86rem;}}#rechner .field{margin-bottom:22px;}#rechner .field > label{display:block;font-weight:600;font-size:.93rem;margin-bottom:9px;}#rechner .hint{font-weight:400;color:var(--cmuted);font-size:.85rem;}#rechner .opts{display:flex;flex-wrap:wrap;gap:8px;}#rechner .opt{position:relative;}#rechner .opt input{position:absolute;opacity:0;width:0;height:0;}#rechner .opt span{display:block;padding:10px 15px;border:1.5px solid var(--cline);border-radius:10px;
             cursor:pointer;font-size:.9rem;background:#fff;transition:.15s;user-select:none;}#rechner .opt input:checked + span{border-color:var(--cblue);background:var(--cbg);
             color:var(--cblue-dark);font-weight:600;box-shadow:0 0 0 1px var(--cblue) inset;}#rechner .opt span:hover{border-color:#b9cfe0;}#rechner .len-row{display:flex;align-items:center;gap:16px;}#rechner .len-row input[type=range]{flex:1;accent-color:var(--cblue);}#rechner .len-box{width:110px;padding:11px 12px;border:1.5px solid var(--cline);border-radius:10px;
            font-size:1.05rem;font-weight:600;font-family:'Inter',sans-serif;color:var(--cink);text-align:center;}#rechner .result{background:var(--cbg);border:1px solid var(--cline);border-radius:16px;padding:26px 24px;
@@ -236,11 +236,15 @@
       </div>
 
       <div class="field">
-        <label>Glas</label>
+        <label>Glas <span class="hint">— VSG 8+8 aus TVG (Verbundsicherheitsglas, teilvorgespannt)</span></label>
         <div class="opts" id="glas">
-          <label class="opt"><input type="radio" name="g" value="klar" checked><span>VSG 8+8 Klar</span></label>
-          <label class="opt"><input type="radio" name="g" value="extra"><span>Extraklar</span></label>
-          <label class="opt"><input type="radio" name="g" value="grau"><span>Grau / Schwarz</span></label>
+          <label class="opt"><input type="radio" name="g" value="klar" checked><span>Klar + Klar</span></label>
+          <label class="opt"><input type="radio" name="g" value="extra"><span>Extraklar + Extraklar</span></label>
+          <label class="opt"><input type="radio" name="g" value="bronze1"><span>Bronze + Klar</span></label>
+          <label class="opt"><input type="radio" name="g" value="bronze2"><span>Bronze + Bronze</span></label>
+          <label class="opt"><input type="radio" name="g" value="grau1"><span>Grau + Klar</span></label>
+          <label class="opt"><input type="radio" name="g" value="grau2"><span>Grau + Grau</span></label>
+          <label class="opt"><input type="radio" name="g" value="schwarz"><span>Klar + schwarze Folie + Klar</span></label>
         </div>
       </div>
 
@@ -280,7 +284,7 @@
 
     </div>
 
-    <div class="result">
+    <div class="result" data-clarity-unmask="true">
       <div class="cap">Richtpreis</div>
       <div class="sum" id="sum">—</div>
       <div class="per" id="per">—</div>
@@ -730,7 +734,8 @@
 (function(){
   // ---- Расценки (всё с НДС), схема наценки 40% на всю себестоимость ----
   var P = {
-    glas:     { klar:125, extra:145, grau:184.5 },   // €/м²
+    glas:     { klar:125, extra:145, bronze1:155, bronze2:185,
+                grau1:155, grau2:185, schwarz:185 },   // €/м²
     profil:   150,   // €/пог.м, хлысты по 5 м
     punkt:    20,    // €/шт, 4 шт на пог.м
     pfosten:  35,    // €/шт, 2 шт на пог.м
@@ -799,7 +804,9 @@
   }
 
   // ---- схема: прямая проекция, вид со стороны фасада ----
-  var GLASFARBE = { klar:'#cfe6f2', extra:'#dff1fa', grau:'#8b9aa6' };
+  var GLASFARBE = { klar:'#cfe6f2', extra:'#e4f3fb', bronze1:'#d8bb92', bronze2:'#c39c64',
+                    grau1:'#b3bcc4', grau2:'#8e99a3', schwarz:'#39424c' };
+  var DUNKEL = { schwarz:1, grau2:1, bronze2:1 };
 
   function drawViz(){
     var f = v('f'), g = v('g'), b = v('b'), h = parseFloat(v('h'));
@@ -816,15 +823,19 @@
     var slope = schraeg ? 0.25 : 0;   // подъём марша
     var o = '';
 
-    // основание / линия марша
-    if (schraeg){
-      o += '<line x1="20" y1="' + (boden + (x0-20)*slope) + '" x2="400" y2="' +
-           (boden - (400-x0)*slope) + '" stroke="#9fb3c4" stroke-width="2"/>';
-    } else {
-      o += '<line x1="20" y1="' + boden + '" x2="400" y2="' + boden + '" stroke="#9fb3c4" stroke-width="2"/>';
-    }
-
     function bodenY(x){ return boden - (x - x0) * slope; }
+
+    // перекрытие (Beton- oder Holzdecke), в которое идёт крепление
+    var dicke = 22;
+    var yL = bodenY(20), yR = bodenY(400);
+    o += '<polygon points="20,' + yL + ' 400,' + yR + ' 400,' + (yR+dicke) + ' 20,' + (yL+dicke) +
+         '" fill="#e3e8ec" stroke="#9fb3c4" stroke-width="1.5"/>';
+    // штриховка бетона
+    for (var sx = 30; sx < 400; sx += 22){
+      o += '<line x1="' + sx + '" y1="' + (bodenY(sx)+4) + '" x2="' + (sx+9) + '" y2="' +
+           (bodenY(sx+9)+dicke-3) + '" stroke="#c2ccd4" stroke-width="1"/>';
+    }
+    o += '<text x="400" y="' + (yR+dicke+13) + '" font-size="10" fill="#8496a5" text-anchor="end">Betondecke / Unterkonstruktion</text>';
 
     for (var i = 0; i < panels; i++){
       var x  = x0 + i * (pw + gap);
@@ -835,7 +846,7 @@
       // стекло: на марше — параллелограмм (боковые кромки вертикальные)
       o += '<polygon points="' + x + ',' + yl + ' ' + (x+pw) + ',' + yr + ' ' +
            (x+pw) + ',' + tr + ' ' + x + ',' + tl + '" fill="' + GLASFARBE[g] +
-           '" fill-opacity="' + (g === 'grau' ? '.75' : '.55') +
+           '" fill-opacity="' + (DUNKEL[g] ? '.8' : '.55') +
            '" stroke="#6f93ad" stroke-width="1.4"/>';
       // блик
       o += '<line x1="' + (x + pw*0.18) + '" y1="' + (tl + 10) + '" x2="' + (x + pw*0.42) +
@@ -843,8 +854,11 @@
 
       if (f === 'punkt'){
         [0.22, 0.78].forEach(function(k){
-          o += '<circle cx="' + (x + pw*k) + '" cy="' + (bodenY(x + pw*k) - 16) +
-               '" r="5.5" fill="#fff" stroke="#43566a" stroke-width="2"/>';
+          var cx = x + pw*k, cy = bodenY(cx) - 14;
+          // анкер в перекрытие
+          o += '<rect x="' + (cx-2.5) + '" y="' + cy + '" width="5" height="' +
+               (bodenY(cx) + 16 - cy) + '" fill="#8e9aa5"/>';
+          o += '<circle cx="' + cx + '" cy="' + cy + '" r="6" fill="#fff" stroke="#43566a" stroke-width="2"/>';
         });
       } else if (f === 'pfosten'){
         [0.10, 0.90].forEach(function(k){
