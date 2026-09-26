@@ -128,7 +128,7 @@
             cursor:pointer;font-size:.9rem;background:#fff;transition:.15s;user-select:none;}#rechner .opt input:checked + span{border-color:var(--cblue);background:var(--cbg);
             color:var(--cblue-dark);font-weight:600;box-shadow:0 0 0 1px var(--cblue) inset;}#rechner .opt span:hover{border-color:#b9cfe0;}#rechner .len-row{display:flex;align-items:center;gap:16px;}#rechner .len-row input[type=range]{flex:1;accent-color:var(--cblue);}#rechner .len-box{width:110px;padding:11px 12px;border:1.5px solid var(--cline);border-radius:10px;
            font-size:1.05rem;font-weight:600;font-family:'Inter',sans-serif;color:var(--cink);text-align:center;}#rechner .result{background:var(--cbg);border:1px solid var(--cline);border-radius:16px;padding:26px 24px;
-          position:sticky;top:20px;}#rechner .result .cap{font-size:.82rem;text-transform:uppercase;letter-spacing:.08em;color:var(--cmuted);margin-bottom:6px;}#rechner .result .sum{font-family:'Space Grotesk',sans-serif;font-size:2.5rem;font-weight:700;color:var(--cblue-dark);line-height:1.1;}#rechner .result .per{font-size:1.05rem;color:var(--cblue);font-weight:600;margin-top:6px;}#rechner .result .vat{font-size:.85rem;color:var(--cmuted);margin-top:10px;}#rechner .result hr{border:none;border-top:1px solid var(--cline);margin:20px 0;}#rechner .result .note{font-size:.84rem;color:var(--cmuted);line-height:1.5;}#rechner .btn-cta{display:block;text-align:center;margin-top:18px;padding:14px;border-radius:12px;
+          position:sticky;top:20px;}#rechner .result .cap{font-size:.82rem;text-transform:uppercase;letter-spacing:.08em;color:var(--cmuted);margin-bottom:6px;}#rechner .result .sum{font-family:'Space Grotesk',sans-serif;font-size:2.5rem;font-weight:700;color:var(--cblue-dark);line-height:1.1;}#rechner .result .per{font-size:1.05rem;color:var(--cblue);font-weight:600;margin-top:6px;}#rechner .result .vat{font-size:.85rem;color:var(--cmuted);margin-top:10px;}#rechner .result .aufteilung{font-size:.86rem;color:var(--cink);line-height:1.5;margin-top:12px;padding-top:12px;border-top:1px dashed var(--cline);}#rechner .result .aufteilung b{font-weight:600;}#rechner .result .aufteilung .sub{color:var(--cmuted);}#rechner .result hr{border:none;border-top:1px solid var(--cline);margin:20px 0;}#rechner .result .note{font-size:.84rem;color:var(--cmuted);line-height:1.5;}#rechner .btn-cta{display:block;text-align:center;margin-top:18px;padding:14px;border-radius:12px;
            background:var(--cblue);color:#fff;text-decoration:none;font-weight:600;font-size:.98rem;}#rechner .btn-cta:hover{background:var(--cblue-dark);}#rechner .btn-wa{display:block;text-align:center;margin-top:10px;padding:14px;border-radius:12px;
           background:var(--cgreen);color:#fff;text-decoration:none;font-weight:600;font-size:.98rem;}#rechner .viz{border:1px solid var(--cline);border-radius:14px;background:#fbfdff;padding:14px 14px 8px;margin-bottom:22px;}#rechner .viz-cap{font-size:.8rem;color:var(--cmuted);text-align:center;margin-top:4px;}#rechner .explain{background:var(--cbg);border-left:3px solid var(--cblue);border-radius:0 10px 10px 0;
            padding:13px 16px;margin-top:10px;font-size:.88rem;line-height:1.55;color:var(--cink);}#rechner .explain b{color:var(--cblue-dark);}#rechner .explain .no{color:var(--cmuted);}#rechner .breakdown{margin-top:26px;font-size:.88rem;border-top:1px solid var(--cline);padding-top:16px;}#rechner .breakdown summary{cursor:pointer;font-weight:600;color:var(--cblue);}#rechner .breakdown table{width:100%;border-collapse:collapse;margin-top:12px;}#rechner .breakdown td{padding:5px 0;color:var(--cmuted);}#rechner .breakdown td:last-child{text-align:right;color:var(--cink);font-weight:500;}
@@ -320,6 +320,7 @@
       <div class="sum" id="sum">—</div>
       <div class="per" id="per">—</div>
       <div class="vat">inkl. 20 % MwSt., inkl. Lieferung und Montage</div>
+      <div class="aufteilung" id="aufteilung"></div>
       <div class="liefer" id="lieferInfo"></div>
       <hr>
       <div class="note">Unverbindlicher Richtwert. Das verbindliche Angebot erstellen wir nach dem Aufmaß vor Ort — Ecken, Untergrund und Höhenversätze können den Preis verändern.</div>
@@ -858,7 +859,74 @@
     document.getElementById('per').textContent = 'ca. ' + fmt(Math.round(preis/L)) + ' € / lfm';
     document.getElementById('lenBox').value = L.toString().replace('.',',') + ' lfm';
 
+    var auf = teilungText(Lg, Ls);
+    document.getElementById('aufteilung').innerHTML =
+      '<b>Aufteilung:</b> ' + auf.text +
+      '<div class="sub">Richtwert — die endgültige Scheibenteilung legen wir beim Aufmaß fest.</div>';
+
+    LAST = { L:L, Ls:Ls, b:b, f:f, g:g, h:h, m:m, t:t, r:r,
+             preis: round50(preis), teilung: auf.plain };
+    updateWa();
+
     drawViz(); drawExplain();
+  }
+
+  // ---- раскладка панелей: максимум 1200 мм на скло ----
+  function teilung(len){
+    if (!(len > 0.01)) return null;
+    var n = Math.ceil(len * 1000 / 1200);
+    return { n:n, w: Math.round(len * 1000 / n / 10) * 10 };
+  }
+  function stueck(o){ return o.n + (o.n === 1 ? ' Scheibe' : ' Scheiben') + ' à ca. ' + o.w + ' mm'; }
+  function teilungText(Lg, Ls){
+    var a = teilung(Lg), s = teilung(Ls), parts = [];
+    if (a) parts.push((s ? 'gerade ' : '') + stueck(a));
+    if (s) parts.push('schräg ' + stueck(s));
+    var plain = parts.join(' · ');
+    return { text: plain, plain: plain };
+  }
+
+  // ---- передача расчёта в форму и в WhatsApp ----
+  var LAST = null;
+  function lbl(name){
+    var el = document.querySelector('input[name="' + name + '"]:checked');
+    var sp = el && el.parentNode.querySelector('span');
+    return sp ? sp.textContent.trim() : '';
+  }
+  function anfrageText(){
+    if (!LAST) return '';
+    var laenge = LAST.L.toString().replace('.', ',') + ' lfm'
+      + (LAST.Ls > 0 ? ' (davon ' + LAST.Ls.toString().replace('.', ',') + ' lfm schräg)' : '');
+    return 'Anfrage aus dem Preisrechner\n'
+      + 'Länge: ' + laenge + '\n'
+      + 'Einsatzort: ' + lbl('b') + '\n'
+      + 'Befestigung: ' + lbl('f') + '\n'
+      + 'Glas: VSG 8+8 — ' + lbl('g') + '\n'
+      + 'Höhe: ' + lbl('h') + '\n'
+      + 'Leistungsumfang: ' + lbl('m') + '\n'
+      + 'Liefertermin: ' + lbl('t') + '\n'
+      + 'Region: ' + lbl('r') + '\n'
+      + 'Aufteilung: ' + LAST.teilung + '\n'
+      + 'Richtpreis laut Rechner: ca. ' + fmt(LAST.preis) + ' € inkl. MwSt.';
+  }
+  var MARK = 'Anfrage aus dem Preisrechner';
+  var cta = document.querySelector('#rechner .btn-cta');
+  if (cta) cta.addEventListener('click', function(){
+    var ta = document.getElementById('nachricht');
+    if (!ta) return;
+    var block = anfrageText();
+    if (!block) return;
+    var rest = '';
+    if (ta.value){
+      var i = ta.value.indexOf(MARK);
+      rest = (i === -1 ? ta.value : ta.value.slice(0, i)).trim();   // старый блок заменяем
+    }
+    ta.value = block + (rest ? '\n\n' + rest : '\n\n');
+    try { ta.setSelectionRange(ta.value.length, ta.value.length); } catch(e){}
+  });
+  function updateWa(){
+    var wa = document.querySelector('#rechner .btn-wa'), block = anfrageText();
+    if (wa && block) wa.href = 'https://wa.me/4368181380389?text=' + encodeURIComponent(block);
   }
 
   // ---- схема: прямая проекция, вид со стороны фасада ----
