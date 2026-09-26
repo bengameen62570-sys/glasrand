@@ -668,3 +668,29 @@ a.fit-more:hover{text-decoration:underline;}
   .picker{grid-template-columns:1fr;}
   .picker-media{max-width:300px;margin-left:auto;margin-right:auto;}
 }
+
+
+/* ============================================================
+   Fix 26.09.2026 — kein horizontaler Überlauf auf dem Handy
+   Ursache: Logo + Button in der Kopfzeile waren zusammen
+   breiter als der Bildschirm; dadurch verschob sich die
+   ganze Seite und das Menü-Symbol lag außerhalb.
+   ============================================================ */
+html{overflow-x:clip;}
+body{overflow-x:clip;}
+img,svg,iframe,video,table{max-width:100%;}
+
+@media (max-width:700px){
+  .container{padding-left:16px;padding-right:16px;}
+  .logo small{display:none;}
+  .logo{font-size:1.05rem;gap:9px;}
+  .logo-mark{width:30px;height:30px;}
+  .header-actions{gap:10px;}
+  .header-actions .btn{padding:11px 16px;font-size:.86rem;}
+  .header-inner{height:66px;}
+  .nav-links{top:66px;}
+}
+@media (max-width:380px){
+  .header-actions .btn{padding:10px 12px;font-size:.8rem;}
+  .logo{font-size:.98rem;}
+}

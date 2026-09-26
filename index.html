@@ -52,24 +52,40 @@
 <script type="application/ld+json">
 {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
+  "@type": "HomeAndConstructionBusiness",
+  "@id": "https://glasrand.at/#business",
   "name": "GlasRand",
   "legalName": "Veniamin Kononenko e.U.",
   "image": "https://glasrand.at/img/hero-terrasse.jpg",
   "url": "https://glasrand.at/",
   "telephone": "+4368181380389",
   "email": "bengameen62570@gmail.com",
-  "description": "Aufmaß, Fertigung, Lieferung und Montage von Ganzglasgeländern für Terrassen — österreichweit.",
+  "description": "Aufmaß, Fertigung, Lieferung und Montage von Ganzglasgeländern für Terrasse, Balkon und Treppe — österreichweit, mit Sitz in Wien.",
   "address": {
     "@type": "PostalAddress",
-    "streetAddress": "Salesianergasse 3/18",
-    "postalCode": "1030",
+    "streetAddress": "Seitenstettengasse 5/37",
+    "postalCode": "1010",
     "addressLocality": "Wien",
     "addressCountry": "AT"
   },
   "areaServed": { "@type": "Country", "name": "Österreich" },
   "vatID": "ATU83265958",
-  "priceRange": "€€"
+  "priceRange": "600–800 EUR pro Laufmeter inkl. Montage",
+  "knowsAbout": [
+    "Ganzglasgeländer",
+    "Terrassengeländer aus Glas",
+    "Balkongeländer aus Glas",
+    "Treppengeländer aus Glas",
+    "VSG Verbund-Sicherheitsglas",
+    "ESG Einscheiben-Sicherheitsglas",
+    "Absturzsicherung nach OIB-Richtlinie 4"
+  ],
+  "makesOffer": [
+    { "@type": "Offer", "itemOffered": { "@type": "Service",
+      "name": "Glasgeländer inkl. Aufmaß, Fertigung, Lieferung und Montage" } },
+    { "@type": "Offer", "itemOffered": { "@type": "Service",
+      "name": "Lieferung von Glas, Klemmprofilen und Punkthaltern ohne Montage" } }
+  ]
 }
 </script>
 
@@ -93,8 +109,8 @@
   --cline:#dbe6ef; --cbg:#f2f7fb; --cgreen:#25a05a;
 }
 #rechner *{box-sizing:border-box;}
-#rechner .calc{max-width:960px;margin:0 auto;}#rechner .calc h2{font-family:'Space Grotesk',sans-serif;font-size:2rem;margin:0 0 8px;}#rechner .calc .lead{color:var(--cmuted);margin:0 0 28px;font-size:1.02rem;}#rechner .calc-grid{display:grid;grid-template-columns:1fr 340px;gap:28px;align-items:start;}
-  @media (max-width:860px){#rechner .calc-grid{grid-template-columns:1fr;} #rechner .result{position:static;} #rechner .result .sum{font-size:2.1rem;} #rechner .opt span{padding:9px 12px;font-size:.86rem;}}#rechner .field{margin-bottom:22px;}#rechner .field > label{display:block;font-weight:600;font-size:.93rem;margin-bottom:9px;}#rechner .hint{font-weight:400;color:var(--cmuted);font-size:.85rem;}#rechner .opts{display:flex;flex-wrap:wrap;gap:8px;}#rechner .opt{position:relative;}#rechner .opt input{position:absolute;opacity:0;width:0;height:0;}#rechner .opt span{display:block;padding:10px 15px;border:1.5px solid var(--cline);border-radius:10px;
+#rechner .calc{max-width:960px;margin:0 auto;}#rechner .calc h2{font-family:'Space Grotesk',sans-serif;font-size:2rem;margin:0 0 8px;}#rechner .calc .lead{color:var(--cmuted);margin:0 0 28px;font-size:1.02rem;}#rechner .calc-grid{display:grid;grid-template-columns:minmax(0,1fr) 340px;gap:28px;align-items:start;}#rechner .calc-grid > *{min-width:0;}#rechner .len-row input[type=range]{min-width:0;}#rechner .opt span{max-width:100%;}
+  @media (max-width:860px){#rechner .calc-grid{grid-template-columns:minmax(0,1fr);} #rechner .result{position:static;} #rechner .result .sum{font-size:2.1rem;} #rechner .opt span{padding:9px 12px;font-size:.86rem;}}#rechner .field{margin-bottom:22px;}#rechner .field > label{display:block;font-weight:600;font-size:.93rem;margin-bottom:9px;}#rechner .hint{font-weight:400;color:var(--cmuted);font-size:.85rem;}#rechner .opts{display:flex;flex-wrap:wrap;gap:8px;}#rechner .opt{position:relative;}#rechner .opt input{position:absolute;opacity:0;width:0;height:0;}#rechner .opt span{display:block;padding:10px 15px;border:1.5px solid var(--cline);border-radius:10px;
             cursor:pointer;font-size:.9rem;background:#fff;transition:.15s;user-select:none;}#rechner .opt input:checked + span{border-color:var(--cblue);background:var(--cbg);
             color:var(--cblue-dark);font-weight:600;box-shadow:0 0 0 1px var(--cblue) inset;}#rechner .opt span:hover{border-color:#b9cfe0;}#rechner .len-row{display:flex;align-items:center;gap:16px;}#rechner .len-row input[type=range]{flex:1;accent-color:var(--cblue);}#rechner .len-box{width:110px;padding:11px 12px;border:1.5px solid var(--cline);border-radius:10px;
            font-size:1.05rem;font-weight:600;font-family:'Inter',sans-serif;color:var(--cink);text-align:center;}#rechner .result{background:var(--cbg);border:1px solid var(--cline);border-radius:16px;padding:26px 24px;
@@ -549,7 +565,11 @@
       <div class="faq-list">
         <details class="faq-item">
           <summary>Was kostet ein Glasgeländer?</summary>
-          <div class="faq-answer"><p>Der Preis hängt von Länge, Glasart (ESG oder VSG), Glasfarbe und Beschlagsystem ab. Nach einem kostenlosen Aufmaß erhalten Sie eine genaue, unverbindliche Berechnung für Ihr Projekt.</p></div>
+          <div class="faq-answer"><p>Ein Ganzglasgeländer inklusive Aufmaß, Lieferung und Montage liegt in der Regel zwischen 600 und 800 € pro Laufmeter inkl. 20 % MwSt. Der genaue Preis hängt von Länge, Glasart, Glasfarbe und Beschlagsystem ab — mit dem <a href="#rechner">Preisrechner</a> erhalten Sie in 30 Sekunden einen Richtpreis, das verbindliche Angebot folgt nach dem Aufmaß.</p></div>
+        </details>
+        <details class="faq-item">
+          <summary>Wie hoch muss ein Geländer in Österreich sein?</summary>
+          <div class="faq-answer"><p>Nach OIB-Richtlinie 4 gilt: bei einer Absturzhöhe bis 12 m mindestens 100 cm, über 12 m mindestens 110 cm, bei Innentreppen in Wohnungen mindestens 90 cm. Mit einer tiefen Brüstung ab 20 cm ist eine Reduktion möglich, jedoch nie unter 85 cm. <a href="glas.html">Mehr zu Glas &amp; Sicherheit →</a></p></div>
         </details>
         <details class="faq-item">
           <summary>Wie lange dauert es von der Anfrage bis zur Montage?</summary>
@@ -584,13 +604,15 @@
   {
     "@context": "https://schema.org",
     "@type": "FAQPage",
+    "@id": "https://glasrand.at/#faq",
     "mainEntity": [
-      {"@type":"Question","name":"Was kostet ein Glasgeländer?","acceptedAnswer":{"@type":"Answer","text":"Der Preis hängt von Länge, Glasart (ESG oder VSG), Glasfarbe und Beschlagsystem ab. Nach einem kostenlosen Aufmaß erhalten Sie eine genaue, unverbindliche Berechnung."}},
-      {"@type":"Question","name":"Wie lange dauert es von der Anfrage bis zur Montage?","acceptedAnswer":{"@type":"Answer","text":"Die Standard-Lieferzeit beträgt 3–5 Wochen vom Aufmaß bis zur fertigen Montage. Auf Anfrage ist eine Express-Fertigung in 1–2 Wochen möglich."}},
-      {"@type":"Question","name":"ESG oder VSG — welches Glas brauche ich?","acceptedAnswer":{"@type":"Answer","text":"Beide sind geprüfte Sicherheitsgläser. VSG empfehlen wir bei höheren Absturzhöhen, da es im Bruchfall in der Folie hält. Beim Aufmaß beraten wir zur passenden Wahl."}},
-      {"@type":"Question","name":"Übernehmt ihr auch Aufmaß und Montage?","acceptedAnswer":{"@type":"Answer","text":"Ja — Aufmaß, Fertigung, Lieferung und Montage kommen aus einer Hand. Sie haben einen Ansprechpartner für den gesamten Prozess."}},
+      {"@type":"Question","name":"Was kostet ein Glasgeländer in Österreich?","acceptedAnswer":{"@type":"Answer","text":"Ein Ganzglasgeländer inklusive Aufmaß, Lieferung und Montage liegt in der Regel zwischen 600 und 800 Euro pro Laufmeter inkl. 20 % MwSt. Der genaue Preis hängt von Länge, Glasart, Glasfarbe und Beschlagsystem ab. Über den Preisrechner auf glasrand.at erhalten Sie in etwa 30 Sekunden einen Richtpreis ohne Angabe von Kontaktdaten."}},
+      {"@type":"Question","name":"Wie hoch muss ein Geländer in Österreich sein?","acceptedAnswer":{"@type":"Answer","text":"Nach OIB-Richtlinie 4 gilt: bei einer Absturzhöhe bis 12 m mindestens 100 cm, über 12 m mindestens 110 cm, bei Innentreppen in Wohnungen mindestens 90 cm. Mit einer tiefen Brüstung ab 20 cm ist eine Reduktion möglich, jedoch nie unter 85 cm."}},
+      {"@type":"Question","name":"ESG oder VSG — welches Glas braucht man für ein Geländer?","acceptedAnswer":{"@type":"Answer","text":"Wo das Glas selbst die Absturzsicherung bildet, ist in Österreich in der Regel VSG (Verbund-Sicherheitsglas) erforderlich. Ein einzelnes ESG hat nach Bruch keine Resttragfähigkeit, während VSG durch die reißfeste Folie zusammenhält."}},
+      {"@type":"Question","name":"Wie lange dauert es von der Anfrage bis zur Montage?","acceptedAnswer":{"@type":"Answer","text":"Die Standard-Lieferzeit beträgt 3 bis 5 Wochen vom Aufmaß bis zur fertigen Montage. Auf Anfrage ist eine Express-Fertigung in 1 bis 2 Wochen gegen Aufpreis möglich."}},
+      {"@type":"Question","name":"Übernimmt GlasRand auch Aufmaß und Montage?","acceptedAnswer":{"@type":"Answer","text":"Ja — Aufmaß, Fertigung, Lieferung und Montage kommen aus einer Hand, österreichweit. Auf Wunsch ist auch die reine Lieferung von Glas und Beschlägen ohne Montage möglich."}},
       {"@type":"Question","name":"Welche Glasfarben gibt es?","acceptedAnswer":{"@type":"Answer","text":"Sieben Farben: Klar, Extraklar, Satiniert, Bronze, Grau, Anthrazit und Schwarz — von komplett transparent bis blickdicht."}},
-      {"@type":"Question","name":"In welchen Regionen seid ihr tätig?","acceptedAnswer":{"@type":"Answer","text":"In ganz Österreich — Wien, Niederösterreich, Oberösterreich, Steiermark, Salzburg, Tirol, Kärnten, Vorarlberg und Burgenland."}},
+      {"@type":"Question","name":"In welchen Regionen Österreichs ist GlasRand tätig?","acceptedAnswer":{"@type":"Answer","text":"In ganz Österreich — Wien, Niederösterreich, Oberösterreich, Steiermark, Salzburg, Tirol, Kärnten, Vorarlberg und Burgenland. Der Standort ist Wien."}},
       {"@type":"Question","name":"Ist die Berechnung kostenlos?","acceptedAnswer":{"@type":"Answer","text":"Ja. Aufmaß und Angebot sind kostenlos und unverbindlich. Fordern Sie Ihre Berechnung über das Formular an."}}
     ]
   }
