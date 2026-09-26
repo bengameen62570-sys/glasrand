@@ -1,0 +1,33 @@
+User-agent: *
+Allow: /
+
+# Suchmaschinen-Bots
+User-agent: Googlebot
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+# KI-Assistenten — Inhalte dürfen zitiert werden
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+# Nicht indexieren
+Disallow: /danke.html
+
+Sitemap: https://glasrand.at/sitemap.xml
