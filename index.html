@@ -99,6 +99,20 @@
   .header-phone strong{white-space:nowrap;letter-spacing:0;}
   @media (max-width:1450px){ .header-phone span{display:none;} }
   @media (max-width:1250px){ .header-phone{display:none;} }
+  /* Preisbeispiele-Tabelle (statisch, auch für Suchmaschinen lesbar) */
+  .preis-beispiele{margin-top:40px;}
+  .preis-beispiele h3{font-family:'Space Grotesk',sans-serif;font-size:1.25rem;margin:0 0 6px;color:#0a3a5c;}
+  .preis-beispiele > p{color:#5b7186;font-size:.95rem;margin:0 0 18px;}
+  .preis-tab{width:100%;border-collapse:collapse;border:1px solid #dbe6ef;border-radius:12px;overflow:hidden;background:#fff;}
+  .preis-tab th,.preis-tab td{text-align:left;padding:13px 14px;border-bottom:1px solid #dbe6ef;font-size:.93rem;}
+  .preis-tab th{background:#f2f7fb;font-family:'Space Grotesk',sans-serif;color:#0a3a5c;font-weight:600;}
+  .preis-tab tr:last-child td{border-bottom:none;}
+  .preis-tab td:last-child,.preis-tab td:nth-last-child(2){white-space:nowrap;font-weight:600;color:#0a3a5e;}
+  .preis-hinweis{font-size:.85rem;color:#5b7186;margin-top:14px;line-height:1.55;}
+  @media (max-width:620px){
+    .preis-tab th:nth-child(3),.preis-tab td:nth-child(3){display:none;}
+    .preis-tab th,.preis-tab td{padding:11px 10px;font-size:.88rem;}
+  }
   /* Badge: Montage inklusive */
   .montage-badge{display:inline-block;margin:0 0 14px;padding:8px 15px;border-radius:999px;
     background:#e8f5ee;color:#1c6b40;font-size:.92rem;font-weight:500;line-height:1.35;}
@@ -313,6 +327,25 @@
     </div>
 
   </div>
+
+  <div class="preis-beispiele">
+    <h3>Was kostet ein Glasgeländer? Preisbeispiele</h3>
+    <p>Typische Gesamtpreise inklusive Aufmaß, Fertigung, Lieferung und Montage — Richtwerte für Wien und Umgebung, inkl. 20 % MwSt.</p>
+    <table class="preis-tab">
+      <thead>
+        <tr><th>Projekt</th><th>Ausführung</th><th>Preis pro Laufmeter</th><th>Gesamtpreis</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>Balkon, 6 Laufmeter</td><td>VSG 8+8 Klar, Klemmprofil</td><td>ca. 870 €</td><td>ca. 5.200 €</td></tr>
+        <tr><td>Treppe, 8 Laufmeter</td><td>VSG 8+8 Klar, Punkthalter</td><td>ca. 780 €</td><td>ca. 6.250 €</td></tr>
+        <tr><td>Terrasse, 12 Laufmeter</td><td>VSG 8+8 Klar, Klemmprofil</td><td>ca. 700 €</td><td>ca. 8.400 €</td></tr>
+        <tr><td>Balkon, 12 Laufmeter</td><td>VSG 8+8 Grau, Klemmprofil</td><td>ca. 785 €</td><td>ca. 9.400 €</td></tr>
+        <tr><td>Terrasse, 20 Laufmeter</td><td>VSG 8+8 Klar, Klemmprofil</td><td>ca. 615 €</td><td>ca. 12.300 €</td></tr>
+      </tbody>
+    </table>
+    <p class="preis-hinweis">Der Preis pro Laufmeter sinkt mit der Länge, weil Anfahrt, Aufmaß und Lieferung einmalig anfallen. Treppen kosten mehr, da jede Scheibe als Parallelogramm einzeln zugeschnitten wird. Alle Angaben sind unverbindliche Richtwerte — das verbindliche Angebot erstellen wir nach dem Aufmaß vor Ort.</p>
+  </div>
+
 </div>
 
     </div>
@@ -606,7 +639,7 @@
     "@type": "FAQPage",
     "@id": "https://glasrand.at/#faq",
     "mainEntity": [
-      {"@type":"Question","name":"Was kostet ein Glasgeländer in Österreich?","acceptedAnswer":{"@type":"Answer","text":"Ein Ganzglasgeländer inklusive Aufmaß, Lieferung und Montage liegt in der Regel zwischen 600 und 800 Euro pro Laufmeter inkl. 20 % MwSt. Der genaue Preis hängt von Länge, Glasart, Glasfarbe und Beschlagsystem ab. Über den Preisrechner auf glasrand.at erhalten Sie in etwa 30 Sekunden einen Richtpreis ohne Angabe von Kontaktdaten."}},
+      {"@type":"Question","name":"Was kostet ein Glasgeländer in Österreich?","acceptedAnswer":{"@type":"Answer","text":"Ein Ganzglasgeländer inklusive Aufmaß, Lieferung und Montage liegt in der Regel zwischen 600 und 800 Euro pro Laufmeter inkl. 20 % MwSt. Beispiele: Balkon mit 6 Laufmetern rund 5.200 Euro, Terrasse mit 12 Laufmetern rund 8.400 Euro, Terrasse mit 20 Laufmetern rund 12.300 Euro. Der Preis pro Laufmeter sinkt mit der Länge, weil Anfahrt, Aufmaß und Lieferung einmalig anfallen. Treppen kosten mehr, da jede Scheibe als Parallelogramm zugeschnitten wird."}},
       {"@type":"Question","name":"Wie hoch muss ein Geländer in Österreich sein?","acceptedAnswer":{"@type":"Answer","text":"Nach OIB-Richtlinie 4 gilt: bei einer Absturzhöhe bis 12 m mindestens 100 cm, über 12 m mindestens 110 cm, bei Innentreppen in Wohnungen mindestens 90 cm. Mit einer tiefen Brüstung ab 20 cm ist eine Reduktion möglich, jedoch nie unter 85 cm."}},
       {"@type":"Question","name":"ESG oder VSG — welches Glas braucht man für ein Geländer?","acceptedAnswer":{"@type":"Answer","text":"Wo das Glas selbst die Absturzsicherung bildet, ist in Österreich in der Regel VSG (Verbund-Sicherheitsglas) erforderlich. Ein einzelnes ESG hat nach Bruch keine Resttragfähigkeit, während VSG durch die reißfeste Folie zusammenhält."}},
       {"@type":"Question","name":"Wie lange dauert es von der Anfrage bis zur Montage?","acceptedAnswer":{"@type":"Answer","text":"Die Standard-Lieferzeit beträgt 3 bis 5 Wochen vom Aufmaß bis zur fertigen Montage. Auf Anfrage ist eine Express-Fertigung in 1 bis 2 Wochen gegen Aufpreis möglich."}},
