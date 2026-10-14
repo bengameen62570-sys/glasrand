@@ -694,3 +694,20 @@ img,svg,iframe,video,table{max-width:100%;}
   .header-actions .btn{padding:10px 12px;font-size:.8rem;}
   .logo{font-size:.98rem;}
 }
+
+/* ─────────────────────────────────────────────────────────────
+   Телефон: эскиз ограждения едет вместе с экраном, пока
+   заказчик крутит длину, высоту и остальные параметры ниже.
+   ───────────────────────────────────────────────────────────── */
+@media (max-width:860px){
+  #rechner .viz{
+    position:sticky; top:67px; z-index:6;
+    margin-bottom:18px; padding:10px 12px 6px;
+    background:#fbfdff;
+    box-shadow:0 12px 24px -18px rgba(0,0,0,.45);
+  }
+  #rechner .viz svg{ height:24vh !important; width:100%; }
+  #rechner .viz-cap{ font-size:.78rem; margin-top:2px; }
+  /* якорные переходы не должны уводить поля под липкий эскиз */
+  #rechner .field, #rechner .result{ scroll-margin-top:calc(24vh + 96px); }
+}
