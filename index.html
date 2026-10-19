@@ -318,8 +318,18 @@
 
     <div class="result" data-clarity-unmask="true">
       <div class="cap">Richtpreis</div>
-      <div class="sum" id="sum">—</div>
-      <div class="per" id="per">—</div>
+      <div class="gate" id="gate">
+        <div class="gate-title">Ihr Richtpreis ist berechnet</div>
+        <p class="gate-text">Wohin dürfen wir ihn senden? Sie sehen den Preis sofort hier — und bekommen ihn zusätzlich als Nachricht.</p>
+        <div class="gate-row">
+          <input type="tel" id="gate-tel" inputmode="tel" autocomplete="tel" placeholder="Telefon / WhatsApp">
+          <input type="email" id="gate-mail" inputmode="email" autocomplete="email" placeholder="oder E-Mail">
+        </div>
+        <button type="button" class="btn-cta gate-btn" id="gate-btn">Richtpreis anzeigen</button>
+        <p class="gate-hint" id="gate-hint">Glasgeländer ab 390 €/lfm geliefert. Mit dem Absenden stimmen Sie der <a href="datenschutz.html" target="_blank">Datenschutzerklärung</a> zu.</p>
+      </div>
+      <div class="sum locked" id="sum">—</div>
+      <div class="per locked" id="per">—</div>
       <div class="vat">inkl. 20 % MwSt., inkl. Lieferung und Montage</div>
       <div class="aufteilung" id="aufteilung"></div>
       <div class="liefer" id="lieferInfo"></div>
@@ -960,6 +970,41 @@
     ta.value = block + (rest ? '\n\n' + rest : '\n\n');
     try { ta.setSelectionRange(ta.value.length, ta.value.length); } catch(e){}
   });
+  // ---- Richtpreis-Gate: цена видна после телефона/e-mail, заявка уходит на почту ----
+  var UNLOCKED = false;
+  try { UNLOCKED = localStorage.getItem('gr_unlock') === '1'; } catch(e){}
+  function applyGate(){
+    var g = document.getElementById('gate');
+    ['sum','per'].forEach(function(id){ document.getElementById(id).classList.toggle('locked', !UNLOCKED); });
+    if (g) g.style.display = UNLOCKED ? 'none' : '';
+  }
+  function unlock(){
+    UNLOCKED = true;
+    try { localStorage.setItem('gr_unlock','1'); } catch(e){}
+    applyGate();
+  }
+  applyGate();
+  document.getElementById('gate-btn').addEventListener('click', function(){
+    var tel = document.getElementById('gate-tel').value.trim(),
+        mail = document.getElementById('gate-mail').value.trim(),
+        hint = document.getElementById('gate-hint'), btn = this;
+    if (tel.replace(/\D/g,'').length < 6 && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(mail)){
+      hint.textContent = 'Bitte Telefonnummer oder E-Mail-Adresse eingeben.';
+      hint.classList.add('err'); return;
+    }
+    btn.disabled = true; btn.textContent = 'Einen Moment …';
+    var done = false, finish = function(){ if (done) return; done = true; unlock();
+      try { if (window.gtag) gtag('event','generate_lead',{method:'richtpreis'}); } catch(e){} };
+    try {
+      fetch('https://formsubmit.co/ajax/bengameen62570@gmail.com', {
+        method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'},
+        body: JSON.stringify({ _subject:'Richtpreis-Anfrage GlasRand (Rechner)', Telefon: tel || '—', 'E-Mail': mail || '—',
+                               Anfrage: anfrageText(), Seite: location.href })
+      }).then(finish, finish);
+    } catch(e){ finish(); }
+    setTimeout(finish, 4000);
+  });
+
   function updateWa(){
     var wa = document.querySelector('#rechner .btn-wa'), block = anfrageText();
     if (wa && block) wa.href = 'https://wa.me/4368181380389?text=' + encodeURIComponent(block);
