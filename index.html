@@ -138,6 +138,10 @@
 </head>
 <body>
 
+<div class="pdock" id="pdock">
+  <div class="pd-sum"><span>Richtpreis</span><b id="pdock-price" class="locked">—</b></div>
+  <a class="btn-cta pd-btn" id="pdock-btn" href="#gate">Richtpreis anzeigen</a>
+</div>
 <div class="cookie-banner hidden" id="cookie-banner">
   <p>Wir verwenden Cookies von Google Ads zur Messung unserer Werbung sowie Microsoft Clarity zur Analyse der Website-Nutzung (inkl. Sitzungsaufzeichnung). Mehr dazu in unserer <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
   <div class="cookie-actions">
@@ -320,10 +324,10 @@
       <div class="cap">Richtpreis</div>
       <div class="gate" id="gate">
         <div class="gate-title">Ihr Richtpreis ist berechnet</div>
-        <p class="gate-text">Wohin dürfen wir ihn senden? Sie sehen den Preis sofort hier — und bekommen ihn zusätzlich als Nachricht.</p>
+        <p class="gate-text">Geben Sie Ihre Telefonnummer ein — der Preis erscheint sofort hier, und unser Berater kann Sie zur Abstimmung der Details kontaktieren.</p>
         <div class="gate-row">
           <input type="tel" id="gate-tel" inputmode="tel" autocomplete="tel" placeholder="Telefon / WhatsApp">
-          <input type="email" id="gate-mail" inputmode="email" autocomplete="email" placeholder="oder E-Mail">
+          <input type="email" id="gate-mail" inputmode="email" autocomplete="email" placeholder="E-Mail (optional)">
         </div>
         <button type="button" class="btn-cta gate-btn" id="gate-btn">Richtpreis anzeigen</button>
         <p class="gate-hint" id="gate-hint">Glasgeländer ab 390 €/lfm geliefert. Mit dem Absenden stimmen Sie der <a href="datenschutz.html" target="_blank">Datenschutzerklärung</a> zu.</p>
@@ -902,6 +906,7 @@
       : 'Lieferung und Montage in <b>3–5 Wochen</b> ab Auftragsbestätigung.<br>Angebot 30 Tage gültig.';
 
     document.getElementById('sum').textContent = fmt(round50(preis)) + ' €';
+    document.getElementById('pdock-price').textContent = fmt(round50(preis)) + ' €';
     document.getElementById('per').textContent = 'ca. ' + fmt(Math.round(preis/L)) + ' € / lfm';
     document.getElementById('lenBox').value = L.toString().replace('.',',') + ' lfm';
 
@@ -975,8 +980,10 @@
   try { UNLOCKED = localStorage.getItem('gr_unlock') === '1'; } catch(e){}
   function applyGate(){
     var g = document.getElementById('gate');
-    ['sum','per'].forEach(function(id){ document.getElementById(id).classList.toggle('locked', !UNLOCKED); });
+    ['sum','per','pdock-price'].forEach(function(id){ document.getElementById(id).classList.toggle('locked', !UNLOCKED); });
     if (g) g.style.display = UNLOCKED ? 'none' : '';
+    var pb = document.getElementById('pdock-btn');
+    if (pb){ pb.textContent = UNLOCKED ? 'Angebot anfordern' : 'Richtpreis anzeigen'; pb.href = UNLOCKED ? '#kontakt' : '#gate'; }
   }
   function unlock(){
     UNLOCKED = true;
@@ -988,8 +995,8 @@
     var tel = document.getElementById('gate-tel').value.trim(),
         mail = document.getElementById('gate-mail').value.trim(),
         hint = document.getElementById('gate-hint'), btn = this;
-    if (tel.replace(/\D/g,'').length < 6 && !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(mail)){
-      hint.textContent = 'Bitte Telefonnummer oder E-Mail-Adresse eingeben.';
+    if (tel.replace(/\D/g,'').length < 6){
+      hint.textContent = 'Bitte geben Sie Ihre Telefonnummer ein.';
       hint.classList.add('err'); return;
     }
     btn.disabled = true; btn.textContent = 'Einen Moment …';
