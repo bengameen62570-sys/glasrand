@@ -958,10 +958,10 @@
       + 'Liefertermin: ' + lbl('t') + '\n'
       + 'Region: ' + lbl('r') + '\n'
       + 'Aufteilung: ' + LAST.teilung + '\n'
-      + 'Richtpreis laut Rechner: ca. ' + fmt(LAST.preis) + ' € inkl. MwSt.';
+      + (UNLOCKED ? 'Richtpreis laut Rechner: ca. ' + fmt(LAST.preis) + ' € inkl. MwSt.' : 'Bitte um Richtpreis.');
   }
   var MARK = 'Anfrage aus dem Preisrechner';
-  var cta = document.querySelector('#rechner .btn-cta');
+  var cta = document.querySelector('#rechner .result a.btn-cta[href="#kontakt"]');
   if (cta) cta.addEventListener('click', function(){
     var ta = document.getElementById('nachricht');
     if (!ta) return;
@@ -989,6 +989,7 @@
     UNLOCKED = true;
     try { localStorage.setItem('gr_unlock','1'); } catch(e){}
     applyGate();
+    updateWa();
   }
   applyGate();
   document.getElementById('gate-btn').addEventListener('click', function(){
