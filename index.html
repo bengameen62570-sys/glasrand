@@ -71,7 +71,7 @@
   },
   "areaServed": { "@type": "Country", "name": "Österreich" },
   "vatID": "ATU83265958",
-  "priceRange": "600–800 EUR pro Laufmeter inkl. Montage",
+  "priceRange": "ab 250 EUR pro Laufmeter (Glas und Befestigung ab Werk)",
   "knowsAbout": [
     "Ganzglasgeländer",
     "Terrassengeländer aus Glas",
@@ -227,7 +227,7 @@
     <div class="container">
 <div class="calc">
   <h2>Preisrechner</h2>
-  <p class="lead">Richtpreis in 30 Sekunden — ohne Kontaktdaten, ohne Wartezeit.</p>
+  <p class="lead">Richtpreis für Glas und Befestigung in 30 Sekunden. Lieferung und Montage besprechen wir individuell.</p>
 
   <div class="calc-grid">
     <div>
@@ -293,15 +293,6 @@
       </div>
 
       <div class="field">
-        <label>Leistungsumfang</label>
-        <div class="opts" id="umfang">
-          <label class="opt"><input type="radio" name="m" value="montage" checked><span>Mit Aufmaß und Montage</span></label>
-          <label class="opt"><input type="radio" name="m" value="lieferung"><span>Nur Lieferung</span></label>
-        </div>
-        <div class="explain" id="explain"></div>
-      </div>
-
-      <div class="field">
         <label>Liefertermin</label>
         <div class="opts" id="termin">
           <label class="opt"><input type="radio" name="t" value="standard" checked><span>Standard — 3–5 Wochen</span></label>
@@ -309,17 +300,9 @@
         </div>
       </div>
 
-      <div class="field">
-        <label>Region</label>
-        <div class="opts" id="region">
-          <label class="opt"><input type="radio" name="r" value="wien" checked><span>Wien + 50 km</span></label>
-          <label class="opt"><input type="radio" name="r" value="mittel"><span>bis 200 km</span></label>
-          <label class="opt"><input type="radio" name="r" value="fern"><span>über 200 km</span></label>
-        </div>
-      </div>
-
     </div>
 
+    <input type="hidden" name="m" value="material"><input type="hidden" name="r" value="">
     <div class="result" data-clarity-unmask="true">
       <div class="cap">Richtpreis</div>
       <div class="gate" id="gate">
@@ -330,11 +313,12 @@
           <input type="email" id="gate-mail" inputmode="email" autocomplete="email" placeholder="E-Mail (optional)">
         </div>
         <button type="button" class="btn-cta gate-btn" id="gate-btn">Richtpreis anzeigen</button>
-        <p class="gate-hint" id="gate-hint">Glasgeländer ab 390 €/lfm geliefert. Mit dem Absenden stimmen Sie der <a href="datenschutz.html" target="_blank">Datenschutzerklärung</a> zu.</p>
+        <p class="gate-hint" id="gate-hint">Glasgeländer ab 250 €/lfm ab Werk. Mit dem Absenden stimmen Sie der <a href="datenschutz.html" target="_blank">Datenschutzerklärung</a> zu.</p>
       </div>
       <div class="sum locked" id="sum">—</div>
       <div class="per locked" id="per">—</div>
-      <div class="vat">inkl. 20 % MwSt., inkl. Lieferung und Montage</div>
+      <div class="vat">inkl. 20 % MwSt. — Glas und Befestigung nach Maß, ab Werk</div>
+      <div class="note" style="margin-top:6px"><b>Lieferung und Montage werden individuell besprochen.</b> Preis des Klemmprofils ohne Dichtungen — die Dichtungen werden projektbezogen gewählt.</div>
       <div class="aufteilung" id="aufteilung"></div>
       <div class="liefer" id="lieferInfo"></div>
       <hr>
@@ -347,20 +331,20 @@
 
   <div class="preis-beispiele">
     <h3>Was kostet ein Glasgeländer? Preisbeispiele</h3>
-    <p>Typische Gesamtpreise inklusive Aufmaß, Fertigung, Lieferung und Montage — Richtwerte für Wien und Umgebung, inkl. 20 % MwSt.</p>
+    <p>Typische Preise für Glas und Befestigung nach Maß, ab Werk — Richtwerte inkl. 20 % MwSt. Lieferung und Montage werden individuell besprochen.</p>
     <table class="preis-tab">
       <thead>
         <tr><th>Projekt</th><th>Ausführung</th><th>Preis pro Laufmeter</th><th>Gesamtpreis</th></tr>
       </thead>
       <tbody>
-        <tr><td>Balkon, 6 Laufmeter</td><td>VSG 8+8 Klar, Klemmprofil</td><td>ca. 870 €</td><td>ca. 5.200 €</td></tr>
-        <tr><td>Treppe, 8 Laufmeter</td><td>VSG 8+8 Klar, Punkthalter</td><td>ca. 780 €</td><td>ca. 6.250 €</td></tr>
-        <tr><td>Terrasse, 12 Laufmeter</td><td>VSG 8+8 Klar, Klemmprofil</td><td>ca. 700 €</td><td>ca. 8.400 €</td></tr>
-        <tr><td>Balkon, 12 Laufmeter</td><td>VSG 8+8 Grau, Klemmprofil</td><td>ca. 785 €</td><td>ca. 9.400 €</td></tr>
-        <tr><td>Terrasse, 20 Laufmeter</td><td>VSG 8+8 Klar, Klemmprofil</td><td>ca. 615 €</td><td>ca. 12.300 €</td></tr>
+        <tr><td>Balkon, 6 Laufmeter</td><td>VSG 8+8 Klar, Klemmprofil</td><td>ca. 325 €</td><td>ca. 1.950 €</td></tr>
+        <tr><td>Treppe, 8 Laufmeter</td><td>VSG 8+8 Klar, Punkthalter</td><td>ca. 360 €</td><td>ca. 2.900 €</td></tr>
+        <tr><td>Terrasse, 12 Laufmeter</td><td>VSG 8+8 Klar, Klemmprofil</td><td>ca. 280 €</td><td>ca. 3.350 €</td></tr>
+        <tr><td>Balkon, 12 Laufmeter</td><td>VSG 8+8 Grau, Klemmprofil</td><td>ca. 315 €</td><td>ca. 3.800 €</td></tr>
+        <tr><td>Terrasse, 20 Laufmeter</td><td>VSG 8+8 Klar, Klemmprofil</td><td>ca. 255 €</td><td>ca. 5.100 €</td></tr>
       </tbody>
     </table>
-    <p class="preis-hinweis">Der Preis pro Laufmeter sinkt mit der Länge, weil Anfahrt, Aufmaß und Lieferung einmalig anfallen. Treppen kosten mehr, da jede Scheibe als Parallelogramm einzeln zugeschnitten wird. Alle Angaben sind unverbindliche Richtwerte — das verbindliche Angebot erstellen wir nach dem Aufmaß vor Ort.</p>
+    <p class="preis-hinweis">Klemmprofil wird in 5-m-Stangen gerechnet, daher sinkt der Meterpreis mit der Länge. Treppen kosten mehr, da jede Scheibe als Parallelogramm einzeln zugeschnitten wird. Alle Angaben sind unverbindliche Richtwerte — das verbindliche Angebot erstellen wir nach dem Aufmaß vor Ort.</p>
   </div>
 
 </div>
@@ -614,9 +598,14 @@
     <div class="rv-head">
       <span class="rv-score">5,0<small>/ 5</small></span>
       <span class="rv-stars" aria-label="5 von 5 Sternen">★★★★★</span>
-      <span class="rv-src">3 Bewertungen auf MyHammer</span>
+      <span class="rv-src">4 Bewertungen auf MyHammer</span>
     </div>
     <div class="rv-grid">
+      <article class="rv-card">
+        <div class="rv-top"><span class="rv-stars" aria-label="5 von 5 Sternen">★★★★★</span><span class="rv-date">23.10.2026</span></div>
+        <p class="rv-who"><b>MyHammer-Kunde</b>, Wien, Hernals</p>
+        <p class="rv-text">„Hat gründlich gearbeitet und hat via WhatsApp immer sofort geantwortet.“</p>
+      </article>
       <article class="rv-card">
         <div class="rv-top"><span class="rv-stars" aria-label="5 von 5 Sternen">★★★★★</span><span class="rv-date">18.08.2026</span></div>
         <p class="rv-who"><b>Christoph K.</b>, Wien, Margareten</p>
@@ -650,7 +639,7 @@
       <div class="faq-list">
         <details class="faq-item">
           <summary>Was kostet ein Glasgeländer?</summary>
-          <div class="faq-answer"><p>Ein Ganzglasgeländer inklusive Aufmaß, Lieferung und Montage liegt in der Regel zwischen 600 und 800 € pro Laufmeter inkl. 20 % MwSt. Der genaue Preis hängt von Länge, Glasart, Glasfarbe und Beschlagsystem ab — mit dem <a href="#rechner">Preisrechner</a> erhalten Sie in 30 Sekunden einen Richtpreis, das verbindliche Angebot folgt nach dem Aufmaß.</p></div>
+          <div class="faq-answer"><p>Glas und Befestigung für ein Ganzglasgeländer liegen ab Werk in der Regel zwischen 250 und 350 € pro Laufmeter inkl. 20 % MwSt.; Lieferung und Montage werden individuell besprochen. Der genaue Preis hängt von Länge, Glasart, Glasfarbe und Beschlagsystem ab — mit dem <a href="#rechner">Preisrechner</a> erhalten Sie in 30 Sekunden einen Richtpreis, das verbindliche Angebot folgt nach dem Aufmaß.</p></div>
         </details>
         <details class="faq-item">
           <summary>Wie hoch muss ein Geländer in Österreich sein?</summary>
@@ -691,7 +680,7 @@
     "@type": "FAQPage",
     "@id": "https://glasrand.at/#faq",
     "mainEntity": [
-      {"@type":"Question","name":"Was kostet ein Glasgeländer in Österreich?","acceptedAnswer":{"@type":"Answer","text":"Ein Ganzglasgeländer inklusive Aufmaß, Lieferung und Montage liegt in der Regel zwischen 600 und 800 Euro pro Laufmeter inkl. 20 % MwSt. Beispiele: Balkon mit 6 Laufmetern rund 5.200 Euro, Terrasse mit 12 Laufmetern rund 8.400 Euro, Terrasse mit 20 Laufmetern rund 12.300 Euro. Der Preis pro Laufmeter sinkt mit der Länge, weil Anfahrt, Aufmaß und Lieferung einmalig anfallen. Treppen kosten mehr, da jede Scheibe als Parallelogramm zugeschnitten wird."}},
+      {"@type":"Question","name":"Was kostet ein Glasgeländer in Österreich?","acceptedAnswer":{"@type":"Answer","text":"Glas und Befestigung für ein Ganzglasgeländer liegen ab Werk in der Regel zwischen 250 und 350 Euro pro Laufmeter inkl. 20 % MwSt.; Lieferung und Montage werden individuell besprochen. Beispiele: Balkon mit 6 Laufmetern rund 1.950 Euro, Terrasse mit 12 Laufmetern rund 3.350 Euro, Terrasse mit 20 Laufmetern rund 5.100 Euro. Treppen kosten mehr, da jede Scheibe als Parallelogramm zugeschnitten wird."}},
       {"@type":"Question","name":"Wie hoch muss ein Geländer in Österreich sein?","acceptedAnswer":{"@type":"Answer","text":"Nach OIB-Richtlinie 4 gilt: bei einer Absturzhöhe bis 12 m mindestens 100 cm, über 12 m mindestens 110 cm, bei Innentreppen in Wohnungen mindestens 90 cm. Mit einer tiefen Brüstung ab 20 cm ist eine Reduktion möglich, jedoch nie unter 85 cm."}},
       {"@type":"Question","name":"ESG oder VSG — welches Glas braucht man für ein Geländer?","acceptedAnswer":{"@type":"Answer","text":"Wo das Glas selbst die Absturzsicherung bildet, ist in Österreich in der Regel VSG (Verbund-Sicherheitsglas) erforderlich. Ein einzelnes ESG hat nach Bruch keine Resttragfähigkeit, während VSG durch die reißfeste Folie zusammenhält."}},
       {"@type":"Question","name":"Wie lange dauert es von der Anfrage bis zur Montage?","acceptedAnswer":{"@type":"Answer","text":"Die Standard-Lieferzeit beträgt 3 bis 5 Wochen vom Aufmaß bis zur fertigen Montage. Auf Anfrage ist eine Express-Fertigung in 1 bis 2 Wochen gegen Aufpreis möglich."}},
@@ -841,20 +830,17 @@
 </script>
 <script>
 (function(){
-  // ---- Расценки (всё с НДС), схема наценки 40% на всю себестоимость ----
+  // ---- Расценки (всё с НДС). Наценка 25 % только на стекло и крепление; монтаж и доставка — индивидуально ----
   var P = {
     glas:     { klar:125, extra:145, bronze1:155, bronze2:185,
                 grau1:155, grau2:185, schwarz:185 },   // €/м²
-    profil:   150,   // €/пог.м, хлысты по 5 м
+    profil:   79.2,   // €/пог.м прямой (66 нетто), хлысты по 5 м, без уплотнений
+    profilS:  116.4,  // €/пог.м наклонный (97 нетто)
     punkt:    20,    // €/шт, 4 шт на пог.м
     pfosten:  35,    // €/шт, 2 шт на пог.м
-    montage:  130,   // €/пог.м
-    aufmass:  200,   // разовое
-    liefer:   350,   // разовое
-    anfahrt:  { wien:150, mittel:400, fern:600 },  // разовое
-    treppe:   1.7,   // коэффициент на наклонные метры (стекло + монтаж)
+    treppe:   1.7,   // коэффициент на наклонные метры (стекло)
     express:  1.2,   // надбавка за срочное изготовление
-    marge:    1.4
+    marge:    1.25
   };
 
   function v(n){ return document.querySelector('input[name="'+n+'"]:checked').value; }
@@ -862,7 +848,7 @@
   function calc(){
     var L = parseFloat(document.getElementById('len').value);
     var b = v('b'), f = v('f'), g = v('g'), h = parseFloat(v('h')),
-        m = v('m'), r = v('r');
+        m = 'material', r = '';
 
     // наклонные метры считаются с коэффициентом
     var sf = document.getElementById('schraegField');
@@ -884,26 +870,18 @@
     var glasPreis = Lrech * h * P.glas[g];
 
     var besch;
-    if (f === 'profil')      besch = Math.ceil(L/5)*5 * P.profil;
+    if (f === 'profil')      besch = Math.ceil(Lg/5)*5 * P.profil + Math.ceil(Ls/5)*5 * P.profilS;
     else if (f === 'punkt')  besch = Math.round(L*4) * P.punkt;
     else                     besch = Math.round(L*2) * P.pfosten;
 
-    var montage = 0, aufmass = 0, anfahrt = 0;
-    if (m === 'montage'){
-      montage = Lrech * P.montage;
-      aufmass = P.aufmass;
-      anfahrt = P.anfahrt[r];
-    }
-    var liefer = P.liefer;
-
-    var kosten = glasPreis + besch + montage + aufmass + anfahrt + liefer;
+    var kosten = glasPreis + besch;
     var preis  = kosten * P.marge;
     var t = v('t');
     if (t === 'express') preis *= P.express;
 
     document.getElementById('lieferInfo').innerHTML = (t === 'express')
-      ? 'Lieferung und Montage in <b>1–2 Wochen</b> (Expresszuschlag bereits enthalten).<br>Angebot 30 Tage gültig.'
-      : 'Lieferung und Montage in <b>3–5 Wochen</b> ab Auftragsbestätigung.<br>Angebot 30 Tage gültig.';
+      ? 'Fertigung in <b>1–2 Wochen</b> (Expresszuschlag bereits enthalten).<br><b>Lieferung und Montage werden individuell besprochen.</b>'
+      : 'Fertigung in <b>3–5 Wochen</b> ab Auftragsbestätigung.<br><b>Lieferung und Montage werden individuell besprochen.</b>';
 
     document.getElementById('sum').textContent = fmt(round50(preis)) + ' €';
     document.getElementById('pdock-price').textContent = fmt(round50(preis)) + ' €';
@@ -954,14 +932,13 @@
       + 'Befestigung: ' + lbl('f') + '\n'
       + 'Glas: VSG 8+8 — ' + lbl('g') + '\n'
       + 'Höhe: ' + lbl('h') + '\n'
-      + 'Leistungsumfang: ' + lbl('m') + '\n'
       + 'Liefertermin: ' + lbl('t') + '\n'
-      + 'Region: ' + lbl('r') + '\n'
+      + 'Lieferung und Montage: individuell\n'
       + 'Aufteilung: ' + LAST.teilung + '\n'
-      + (UNLOCKED ? 'Richtpreis laut Rechner: ca. ' + fmt(LAST.preis) + ' € inkl. MwSt.' : 'Bitte um Richtpreis.');
+      + 'Richtpreis laut Rechner: ca. ' + fmt(LAST.preis) + ' € inkl. MwSt.';
   }
   var MARK = 'Anfrage aus dem Preisrechner';
-  var cta = document.querySelector('#rechner .result a.btn-cta[href="#kontakt"]');
+  var cta = document.querySelector('#rechner .btn-cta');
   if (cta) cta.addEventListener('click', function(){
     var ta = document.getElementById('nachricht');
     if (!ta) return;
@@ -989,7 +966,6 @@
     UNLOCKED = true;
     try { localStorage.setItem('gr_unlock','1'); } catch(e){}
     applyGate();
-    updateWa();
   }
   applyGate();
   document.getElementById('gate-btn').addEventListener('click', function(){
@@ -1107,7 +1083,8 @@
   }
 
   function drawExplain(){
-    var m = v('m'), e = document.getElementById('explain');
+    var m = 'material', e = document.getElementById('explain');
+    if (!e) return;
     if (m === 'montage'){
       e.innerHTML = '<b>Enthalten:</b> Aufmaß vor Ort, Fertigung nach Maß, Anfahrt, Lieferung, ' +
         'Montage der Befestigung und des Glases.<br>' +
