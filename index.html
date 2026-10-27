@@ -71,7 +71,7 @@
   },
   "areaServed": { "@type": "Country", "name": "Österreich" },
   "vatID": "ATU83265958",
-  "priceRange": "ab 260 EUR pro Laufmeter (Glas und Befestigung ab Werk)",
+  "priceRange": "ab 250 EUR pro Laufmeter (Glas und Befestigung ab Werk)",
   "knowsAbout": [
     "Ganzglasgeländer",
     "Terrassengeländer aus Glas",
@@ -139,8 +139,8 @@
 <body>
 
 <div class="pdock" id="pdock">
-  <div class="pd-sum"><span>Richtpreis</span><b id="pdock-price" class="locked">—</b></div>
-  <a class="btn-cta pd-btn" id="pdock-btn" href="#gate">Richtpreis anzeigen</a>
+  <div class="pd-sum"><span>Richtpreis</span><b id="pdock-price">—</b></div>
+  <a class="btn-cta pd-btn" id="pdock-btn" href="#kontakt">Angebot anfordern</a>
 </div>
 <div class="cookie-banner hidden" id="cookie-banner">
   <p>Wir verwenden Cookies von Google Ads zur Messung unserer Werbung sowie Microsoft Clarity zur Analyse der Website-Nutzung (inkl. Sitzungsaufzeichnung). Mehr dazu in unserer <a href="datenschutz.html">Datenschutzerklärung</a>.</p>
@@ -305,18 +305,8 @@
     <input type="hidden" name="m" value="material"><input type="hidden" name="r" value="">
     <div class="result" data-clarity-unmask="true">
       <div class="cap">Richtpreis</div>
-      <div class="gate" id="gate">
-        <div class="gate-title">Ihr Richtpreis ist berechnet</div>
-        <p class="gate-text">Geben Sie Ihre Telefonnummer ein — der Preis erscheint sofort hier, und unser Berater kann Sie zur Abstimmung der Details kontaktieren.</p>
-        <div class="gate-row">
-          <input type="tel" id="gate-tel" inputmode="tel" autocomplete="tel" placeholder="Telefon / WhatsApp">
-          <input type="email" id="gate-mail" inputmode="email" autocomplete="email" placeholder="E-Mail (optional)">
-        </div>
-        <button type="button" class="btn-cta gate-btn" id="gate-btn">Richtpreis anzeigen</button>
-        <p class="gate-hint" id="gate-hint">Glasgeländer ab 260 €/lfm ab Werk. Mit dem Absenden stimmen Sie der <a href="datenschutz.html" target="_blank">Datenschutzerklärung</a> zu.</p>
-      </div>
-      <div class="sum locked" id="sum">—</div>
-      <div class="per locked" id="per">—</div>
+      <div class="sum" id="sum">—</div>
+      <div class="per" id="per">—</div>
       <div class="vat">inkl. 20 % MwSt. — Glas und Befestigung nach Maß, ab Werk</div>
       <div class="note" style="margin-top:6px"><b>Lieferung und Montage werden individuell besprochen.</b> Preis des Klemmprofils ohne Dichtungen — die Dichtungen werden projektbezogen gewählt.</div>
       <div class="aufteilung" id="aufteilung"></div>
@@ -337,11 +327,11 @@
         <tr><th>Projekt</th><th>Ausführung</th><th>Preis pro Laufmeter</th><th>Gesamtpreis</th></tr>
       </thead>
       <tbody>
-        <tr><td>Balkon, 6 Laufmeter</td><td>VSG 8+8 Klar, Klemmprofil</td><td>ca. 265 €</td><td>ca. 1.600 €</td></tr>
-        <tr><td>Treppe, 8 Laufmeter</td><td>VSG 8+8 Klar, Punkthalter</td><td>ca. 380 €</td><td>ca. 3.050 €</td></tr>
-        <tr><td>Terrasse, 12 Laufmeter</td><td>VSG 8+8 Klar, Klemmprofil</td><td>ca. 265 €</td><td>ca. 3.200 €</td></tr>
-        <tr><td>Balkon, 12 Laufmeter</td><td>VSG 8+8 Grau, Klemmprofil</td><td>ca. 305 €</td><td>ca. 3.650 €</td></tr>
-        <tr><td>Terrasse, 20 Laufmeter</td><td>VSG 8+8 Klar, Klemmprofil</td><td>ca. 265 €</td><td>ca. 5.300 €</td></tr>
+        <tr><td>Balkon, 6 Laufmeter</td><td>VSG 8+8 Klar, Klemmprofil</td><td>ca. 255 €</td><td>ca. 1.550 €</td></tr>
+        <tr><td>Treppe, 8 Laufmeter</td><td>VSG 8+8 Klar, Punkthalter</td><td>ca. 365 €</td><td>ca. 2.950 €</td></tr>
+        <tr><td>Terrasse, 12 Laufmeter</td><td>VSG 8+8 Klar, Klemmprofil</td><td>ca. 255 €</td><td>ca. 3.050 €</td></tr>
+        <tr><td>Balkon, 12 Laufmeter</td><td>VSG 8+8 Grau, Klemmprofil</td><td>ca. 295 €</td><td>ca. 3.500 €</td></tr>
+        <tr><td>Terrasse, 20 Laufmeter</td><td>VSG 8+8 Klar, Klemmprofil</td><td>ca. 255 €</td><td>ca. 5.100 €</td></tr>
       </tbody>
     </table>
     <p class="preis-hinweis">Treppen kosten mehr, da jede Scheibe als Parallelogramm einzeln zugeschnitten wird. Alle Angaben sind unverbindliche Richtwerte — das verbindliche Angebot erstellen wir nach dem Aufmaß vor Ort.</p>
@@ -639,7 +629,7 @@
       <div class="faq-list">
         <details class="faq-item">
           <summary>Was kostet ein Glasgeländer?</summary>
-          <div class="faq-answer"><p>Glas und Befestigung für ein Ganzglasgeländer liegen ab Werk in der Regel zwischen 260 und 380 € pro Laufmeter inkl. 20 % MwSt.; Lieferung und Montage werden individuell besprochen. Der genaue Preis hängt von Länge, Glasart, Glasfarbe und Beschlagsystem ab — mit dem <a href="#rechner">Preisrechner</a> erhalten Sie in 30 Sekunden einen Richtpreis, das verbindliche Angebot folgt nach dem Aufmaß.</p></div>
+          <div class="faq-answer"><p>Glas und Befestigung für ein Ganzglasgeländer liegen ab Werk in der Regel zwischen 250 und 370 € pro Laufmeter inkl. 20 % MwSt.; Lieferung und Montage werden individuell besprochen. Der genaue Preis hängt von Länge, Glasart, Glasfarbe und Beschlagsystem ab — mit dem <a href="#rechner">Preisrechner</a> erhalten Sie in 30 Sekunden einen Richtpreis, das verbindliche Angebot folgt nach dem Aufmaß.</p></div>
         </details>
         <details class="faq-item">
           <summary>Wie hoch muss ein Geländer in Österreich sein?</summary>
@@ -840,7 +830,7 @@
     pfosten:  35,    // €/шт, 2 шт на пог.м
     treppe:   1.7,   // коэффициент на наклонные метры (стекло)
     express:  1.2,   // надбавка за срочное изготовление
-    marge:    1.30
+    marge:    1.25
   };
 
   function v(n){ return document.querySelector('input[name="'+n+'"]:checked').value; }
@@ -952,42 +942,7 @@
     ta.value = block + (rest ? '\n\n' + rest : '\n\n');
     try { ta.setSelectionRange(ta.value.length, ta.value.length); } catch(e){}
   });
-  // ---- Richtpreis-Gate: цена видна после телефона/e-mail, заявка уходит на почту ----
-  var UNLOCKED = false;
-  try { UNLOCKED = localStorage.getItem('gr_unlock') === '1'; } catch(e){}
-  function applyGate(){
-    var g = document.getElementById('gate');
-    ['sum','per','pdock-price'].forEach(function(id){ document.getElementById(id).classList.toggle('locked', !UNLOCKED); });
-    if (g) g.style.display = UNLOCKED ? 'none' : '';
-    var pb = document.getElementById('pdock-btn');
-    if (pb){ pb.textContent = UNLOCKED ? 'Angebot anfordern' : 'Richtpreis anzeigen'; pb.href = UNLOCKED ? '#kontakt' : '#gate'; }
-  }
-  function unlock(){
-    UNLOCKED = true;
-    try { localStorage.setItem('gr_unlock','1'); } catch(e){}
-    applyGate();
-  }
-  applyGate();
-  document.getElementById('gate-btn').addEventListener('click', function(){
-    var tel = document.getElementById('gate-tel').value.trim(),
-        mail = document.getElementById('gate-mail').value.trim(),
-        hint = document.getElementById('gate-hint'), btn = this;
-    if (tel.replace(/\D/g,'').length < 6){
-      hint.textContent = 'Bitte geben Sie Ihre Telefonnummer ein.';
-      hint.classList.add('err'); return;
-    }
-    btn.disabled = true; btn.textContent = 'Einen Moment …';
-    var done = false, finish = function(){ if (done) return; done = true; unlock();
-      try { if (window.gtag) gtag('event','generate_lead',{method:'richtpreis'}); } catch(e){} };
-    try {
-      fetch('https://formsubmit.co/ajax/bengameen62570@gmail.com', {
-        method:'POST', headers:{'Content-Type':'application/json','Accept':'application/json'},
-        body: JSON.stringify({ _subject:'Richtpreis-Anfrage GlasRand (Rechner)', Telefon: tel || '—', 'E-Mail': mail || '—',
-                               Anfrage: anfrageText(), Seite: location.href })
-      }).then(finish, finish);
-    } catch(e){ finish(); }
-    setTimeout(finish, 4000);
-  });
+  // Richtpreis ohne Telefon-Gate sichtbar (28.10.2026)
 
   function updateWa(){
     var wa = document.querySelector('#rechner .btn-wa'), block = anfrageText();
